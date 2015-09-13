@@ -2,7 +2,7 @@
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/userSecurity#",
 	"new": {
-		"extends":"uri://registries/people#models/person",
+		"extends":"uri://registries/people#models/fullperson",
 		"title": "Nový člen",
 		"transCode": "schema.member.new",
 		"security": {
@@ -24,10 +24,10 @@
 		}
 	},
 	"view": {
-		"extends":"uri://registries/people#models/person",
+		"extends": "uri://registries/people#models/person",
 		"title": "Člen",
 		"transCode": "schema.member.view",
-		"table": "people",
+
 		"security": {
 			"create": {
 				"static": [
@@ -74,26 +74,23 @@
 			}
 		],
 		"properties": {
-			"systemCredentials":{
+			"systemCredentials": {
 				"type": "object",
 				"properties": {
 					"profiles": {
 						"type": "array",
 						"items": {
-							"type": "object",
-							"properties": {
-								"id": "string"
-							}
+							"id": "string"
 						}
 					},
-					"login":{
-						"type":"object",
-						"properties":{
-							"loginName":{
-								"type":"string"
+					"login": {
+						"type": "object",
+						"properties": {
+							"loginName": {
+								"type": "string"
 							},
-							"email":{
-								"type":"string"
+							"email": {
+								"type": "string"
 							}
 						}
 					}

@@ -25,18 +25,6 @@
 					},
 					"required": true
 				},
-				"association": {
-					"type": "object",
-					"title": "Zväz",
-					"transCode": "schema.competition.association",
-					"objectLink2": {
-						"schema": "uri://registries/organizations#views/association/view",
-						"fields": {
-							"name": "association.associationName"
-						}
-					},
-					"required": true
-				},
 				"ageCategory": {
 					"type": "object",
 					"title": "Veková kategória",
@@ -72,17 +60,17 @@
 			"security": {
 				"create": {
 					"static": [
-						"Security - write"
+						"Competition - write"
 					]
 				},
 				"read": {
 					"static": [
-						"Security - read"
+						"Competition - read"
 					]
 				},
 				"modify": {
 					"static": [
-						"Security - write"
+						"Competition - write"
 					]
 				}
 			},

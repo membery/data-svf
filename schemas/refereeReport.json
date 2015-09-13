@@ -319,31 +319,6 @@
 				}
 			}
 		},
-		"listOfPlayersHome": {
-			"title": "Zoznam hráčov - Domáci",
-			"transCode": "schema.refereeReport.listOfPlayersHome",
-			"type": "object",
-			"render": {
-				"width": "full"
-			},
-			"properties": {
-				"players": {
-					"title": "Hráči",
-					"transCode": "schema.refereeReport.listOfPlayers.players",
-					"type": "array",
-					"items": {
-						"objectLink2": {
-							"schema": "uri://registries/people#views/player/view",
-							"fields": {
-								"surName": "baseData.surName",
-								"firstName": "baseData.name",
-								"registrationID": "baseData.registrationID"
-							}
-						}
-					}
-				}
-			}
-		},
 		"officersGuest": {
 			"title": "Funkcionári - Hostia",
 			"transCode": "schema.refereeReport.officersGuest",
@@ -394,6 +369,45 @@
 						"fields": {
 							"surName": "baseData.surName",
 							"firstName": "baseData.name"
+						}
+					}
+				}
+			}
+		},
+		"listOfPlayersHome": {
+			"title": "Zoznam hráčov - Domáci",
+			"transCode": "schema.refereeReport.listOfPlayersHome",
+			"type": "object",
+			"render": {
+				"width": "full"
+			},
+			"properties": {
+				"players": {
+					"title": "Hráči",
+					"transCode": "schema.refereeReport.listOfPlayers.players",
+					"type": "array",
+					"items": {
+						"dressNumber": {
+							"title": "Číslo dresu",
+							"transCode": "schema.refereeReport.listOfPlayers.dressNumber",
+							"type": "string"
+						},
+						"player": {
+							"title": "Hráč",
+							"transCode": "schema.refereeReport.listOfPlayers.player",
+							"objectLink2": {
+								"schema": "uri://registries/people#views/player/view",
+								"fields": {
+									"surName": "baseData.surName",
+									"firstName": "baseData.name",
+									"registrationID": "baseData.registrationID"
+								}
+							}
+						},
+						"altName": {
+							"title": "Alternatívne meno",
+							"transCode": "schema.refereeReport.listOfPlayers.altName",
+							"type": "string"
 						}
 					}
 				}
