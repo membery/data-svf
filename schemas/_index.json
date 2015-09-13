@@ -15,13 +15,11 @@
 	"security.json",
 	"stadiums.json",
 	"statistics.json",
-	"teams.json",
 	"towns.json",
 	"transfers.json",
 	"userSecurity.json",
 	"refereeReport.json",
 	"requests.json",
 	"schedule.json",
-	"nomination.json",
 	"competitionPart.json"
 ]

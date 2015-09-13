@@ -32,6 +32,12 @@
 					"transCode": "schema.org.club.codeOfClub",
 					"sequence": "clubs"
 				},
+				"businessName": {
+					"type": "string",
+					"title": "Obchodný názov spoločnosti",
+					"transCode": "schema.org.club.businessName",
+					"required": true
+				},
 				"name": {
 					"type": "string",
 					"title": "Názov klubu",
@@ -60,17 +66,6 @@
 					"title": "Dátum založenia",
 					"transCode": "schema.org.club.startDate"
 				},
-				"stadium": {
-					"type":"object",
-					"title": "Štadión",
-					"transCode": "schema.org.club.stadium",
-					"objectLink2": {
-						"schema": "uri://registries/stadiums#views/stadium/view",
-						"fields": {
-							"name": "baseData.name"
-						}
-					}
-				},
 				"stateOfClub": {
 					"type": "string",
 					"extends": "uri://registries/commonenums#blocks/active",
@@ -89,9 +84,9 @@
 				}
 			}
 		},
-		"clubAdress": {
-			"title": "Klub - poštová adresa",
-			"transCode": "schema.org.club.clubAdress",
+		"contactAdress": {
+			"title": "Kontaktná osoba - poštová adresa",
+			"transCode": "schema.org.club.contactAdress",
 			"type": "object",
 			"properties": {
 				"contactPerson": {
@@ -103,6 +98,11 @@
 					"type": "string",
 					"title": "Telefónne číslo kontaktnej osoby",
 					"transCode": "schema.org.club.mobileNumberOfContactPerson"
+				},
+				"mailOfContactPerson": {
+					"type": "string",
+					"title": "Mail kontaktnej osoby",
+					"transCode": "schema.org.club.mailOfContactPerson"
 				},
 				"street": {
 					"type": "string",
@@ -129,6 +129,44 @@
 				},
 				"country": {
 					"$ref": "uri://registries/countries#country"
+				}
+			}
+		},
+		"clubAdress": {
+			"title": "Klub - poštová adresa",
+			"transCode": "schema.org.club.clubAdress",
+			"type": "object",
+			"properties": {
+				"street": {
+					"type": "string",
+					"title": "Ulica",
+					"transCode": "schema.org.club.street"
+				},
+				"houseNumber": {
+					"type": "string",
+					"title": "Číslo domu",
+					"transCode": "schema.org.club.houseNumber"
+				},
+				"city": {
+					"$ref": "uri://registries/towns#town"
+				},
+				"zipCode": {
+					"type": "string",
+					"title": "PSČ",
+					"transCode": "schema.org.club.zipCode"
+				},
+				"country": {
+					"$ref": "uri://registries/countries#country"
+				},
+				"webSite": {
+					"type": "string",
+					"title": "Web stránka",
+					"transCode": "schema.org.club.webSite"
+				},
+				"clubMail": {
+					"type": "string",
+					"title": "Mail na klub",
+					"transCode": "schema.org.club.clubMail"
 				}
 			}
 		},
@@ -407,6 +445,9 @@
 			"properties": {
 				"club": {
 					"extends": "uri://registries/organizations#blocks/club"
+				},
+				"contactAdress":{
+					"$ref": "uri://registries/organizations#blocks/contactAdress"
 				},
 				"clubAdress": {
 					"$ref": "uri://registries/organizations#blocks/clubAdress"

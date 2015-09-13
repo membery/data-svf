@@ -66,6 +66,31 @@
 						}
 					}
 				},
+				"teamManager": {
+					"title": "Hráč",
+					"transCode": "schema.roster.teamManager",
+					"type": "object",
+					"required": true,
+					"objectLink2": {
+						"schema": "uri://registries/people#views/fullperson/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"name": "baseData.name",
+							"birthDate": "baseData.birthDate"
+						}
+					}
+				},
+				"stadium": {
+					"type":"object",
+					"title": "Štadión",
+					"transCode": "schema.roster.stadium",
+					"objectLink2": {
+						"schema": "uri://registries/stadiums#views/stadium/view",
+						"fields": {
+							"name": "baseData.name"
+						}
+					}
+				},
 				"lastModification": {
 					"type": "string",
 					"title": "Dátum poslednej modifikácie",
@@ -166,6 +191,92 @@
 				}
 			}
 		},
+		"statisticians": {
+			"title": "Štatistici",
+			"transCode": "schema.roster.statisticians",
+			"type": "object",
+			"properties": {
+				"statistics1": {
+					"title": "Štatistik",
+					"transCode": "schema.roster.statistics",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/people#views/statistic/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"firstName": "baseData.name"
+						}
+					}
+				},
+				"statistics2": {
+					"title": "Štatistik",
+					"transCode": "schema.roster.statistics",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/people#views/statistic/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"firstName": "baseData.name"
+						}
+					}
+				},
+				"statistics3": {
+					"title": "Štatistik",
+					"transCode": "schema.roster.statistics",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/people#views/statistic/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"firstName": "baseData.name"
+						}
+					}
+				}
+			}
+		},
+		"medics": {
+			"title": "Zdravotníci",
+			"transCode": "schema.roster.medics",
+			"type": "object",
+			"properties": {
+				"medic1": {
+					"title": "Zdravotník",
+					"transCode": "schema.roster.medic",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/people#views/medic/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"firstName": "baseData.name"
+						}
+					}
+				},
+				"medic2": {
+					"title": "Zdravotník",
+					"transCode": "schema.roster.medic",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/people#views/medic/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"firstName": "baseData.name"
+						}
+					}
+				},
+				"medic3": {
+					"title": "Zdravotník",
+					"transCode": "schema.roster.medic",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/people#views/medic/view",
+						"fields": {
+							"surName": "baseData.surName",
+							"firstName": "baseData.name"
+						}
+					}
+				}
+			}
+		},
 		"listOfPlayers": {
 			"title": "Zoznam hráčov",
 			"transCode": "schema.roster.listOfPlayers",
@@ -175,9 +286,9 @@
 			},
 			"properties": {
 				"players": {
-					"type": "array",
 					"title": "Hráči",
 					"transCode": "schema.roster.players",
+					"type": "array",
 					"items": {
 						"objectLink2": {
 							"schema": "uri://registries/people#views/player/view",
@@ -187,8 +298,7 @@
 								"birthDate": "baseData.birthDate",
 								"playerLicense": "player.playerLicense"
 							}
-						},
-						"required": true
+						}
 					}
 				}
 			}
@@ -202,17 +312,17 @@
 			"security": {
 				"create": {
 					"static": [
-						"Registry - write"
+						"Roster - write"
 					]
 				},
 				"read": {
 					"static": [
-						"Registry - read"
+						"Roster - read"
 					]
 				},
 				"modify": {
 					"static": [
-						"Registry - write"
+						"Roster - write"
 					]
 				}
 			},
@@ -222,6 +332,12 @@
 				},
 				"coaches": {
 					"$ref": "uri://registries/rosters#blocks/coaches"
+				},
+				"statisticians":{
+					"$ref": "uri://registries/rosters#blocks/statisticians"
+				},
+				"medics":{
+					"$ref": "uri://registries/rosters#blocks/medics"
 				},
 				"listOfPlayers": {
 					"$ref": "uri://registries/rosters#blocks/listOfPlayers"

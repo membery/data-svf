@@ -31,9 +31,6 @@
 					"type": "string",
 					"title": "PSČ",
 					"transCode":"schema.stadium.postcode"
-				},
-				"country": {
-					"$ref":"uri://registries/countries#country"
 				}
 			}
 		},
@@ -66,57 +63,42 @@
 					"title": "Povrch",
 					"transCode":"schema.stadium.surface",
 					"enum":[
-						"prírodný",
-						"umelý"
+						"palubovka",
+						"taraflex"
 					],
 					"enumTransCodes":[
-						"schema.stadium.surface.natural",
-						"schema.stadium.surface.artificial"
+						"schema.stadium.surface.artificial",
+						"schema.stadium.surface.taraflex"
 					],
 					"render":{
 						"component": "psui-selectbox",
 						"searchable": true
 					}
 				},
+				"length": {
+					"type": "string",
+					"title": "Dĺžka (m)",
+					"transCode":"schema.stadium.length"
+				},
+				"width": {
+					"type": "string",
+					"title": "Šírka (m)",
+					"transCode":"schema.stadium.width"
+				},
+				"height": {
+					"type": "string",
+					"title": "Výška (m)",
+					"transCode":"schema.stadium.height"
+				},
 				"overallCapacity": {
 					"type": "number",
 					"title": "Celková kapacita",
 					"transCode":"schema.stadium.overallCapacity"
 				},
-				"numberOfSeats": {
-					"type": "number",
-					"title": "Kapacita na sedenie",
-					"transCode":"schema.stadium.numberOfSeats"
-				},
-				"capacityOfHostSector": {
-					"type": "number",
-					"title": "Kapacita sektoru hostí",
-					"transCode":"schema.stadium.capacityOfHostSector"
-				},
-				"sizeAndSuface": {
-					"type": "string",
-					"title": "Rozmery a povrch ihriska",
-					"transCode":"schema.stadium.sizeAndSuface"
-				},
-				"VIPSeats": {
-					"type": "number",
-					"title": "VIP sedadlá",
-					"transCode":"schema.stadium.VIPSeats"
-				},
 				"Illumination": {
 					"type": "string",
 					"title": "Osvetlenie (lux)",
 					"transCode":"schema.stadium.Illumination"
-				},
-				"runningFrom": {
-					"extends":"uri://registries/commontypes#blocks/date",
-					"title": "V prevádzke od",
-					"transCode":"schema.stadium.runningFrom"
-				},
-				"dateOfLastIlluminationRevision": {
-					"extends":"uri://registries/commontypes#blocks/date",
-					"title": "Dátum poslednej revízie osvetlenia",
-					"transCode":"schema.stadium.dateOfLastIlluminationRevision"
 				},
 				"dateOfLastElectricDeviceRevision": {
 					"extends":"uri://registries/commontypes#blocks/date",
@@ -155,17 +137,17 @@
 			"security": {
 				"create": {
 					"static": [
-						"Security - write"
+						"Stadium - write"
 					]
 				},
 				"read": {
 					"static": [
-						"Security - read"
+						"Stadium - read"
 					]
 				},
 				"modify": {
 					"static": [
-						"Security - write"
+						"Stadium - write"
 					]
 				}
 			},

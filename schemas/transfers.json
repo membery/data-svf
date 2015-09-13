@@ -94,8 +94,9 @@
 				},
 				"dateFrom": {
 					"extends": "uri://registries/commontypes#blocks/date",
-					"title": "Začiatok hosťovania",
-					"transCode": "schema.transfer.dateFrom"
+					"title": "Začiatok prestup/hosťovanie",
+					"transCode": "schema.transfer.dateFrom",
+					"required": true
 				},
 				"dateTo": {
 					"extends": "uri://registries/commontypes#blocks/date",
@@ -198,6 +199,11 @@
 					}
 				],
 				"listFields": [
+					{
+						"field": "baseData.id",
+						"title": "ID",
+						"transCode": "schema.transfer.id"
+					},
 					{
 						"field": "baseData.typeOfTransfer",
 						"title": "Typ zmeny",
