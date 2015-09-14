@@ -554,9 +554,9 @@
 			"transCode": "schema.people.idInfo",
 			"type": "object",
 			"properties": {
-				"currnetId": {
+				"currentId": {
 					"title": "Aktuálne číslo preukazu člena",
-					"transCode": "schema.people.currnetId",
+					"transCode": "schema.people.currentId",
 					"type": "string",
 					"readOnly": true
 				},
