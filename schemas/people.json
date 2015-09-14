@@ -647,10 +647,11 @@
 			"transCode": "schema.people.idInfo",
 			"type": "object",
 			"properties": {
-				"currnetId": {
+				"currentId": {
 					"title": "Aktuálne číslo preukazu člena",
-					"transCode": "schema.people.currnetId",
-					"type": "string"
+					"transCode": "schema.people.currentId",
+					"type": "string",
+					"readOnly": true
 				},
 				"dateOfExpiration": {
 					"extends":"uri://registries/commontypes#blocks/date",

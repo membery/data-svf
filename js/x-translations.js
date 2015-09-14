@@ -152,7 +152,7 @@
 			"schema.people.statistic.modifiedOn":"Dátum aktualizácie",
 
 			"schema.people.idInfo":"Registračný preukaz",
-			"schema.people.currnetId":"Aktuálne číslo preukazu člena",
+			"schema.people.currentId":"Aktuálne číslo preukazu člena",
 			"schema.people.dateOfExpiration":"Dátum platnosti preukazu",
 			"schema.people.dateOfApplicationForId":"Dátum začiatku platnosti preukazu",
 
@@ -580,7 +580,7 @@
 			"schema.people.statistic.modifiedOn":"Dátum aktualizácie",
 
 			"schema.people.idInfo":"Registračný preukaz",
-			"schema.people.currnetId":"Aktuálne číslo preukazu člena",
+			"schema.people.currentId":"Aktuálne číslo preukazu člena",
 			"schema.people.dateOfExpiration":"Dátum platnosti preukazu",
 			"schema.people.dateOfApplicationForId":"Dátum začiatku platnosti preukazu",
 
