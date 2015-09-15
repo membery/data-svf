@@ -33,6 +33,30 @@
 					"transCode": "schema.transfer.clubFrom",
 					"type": "object",
 					"required": true,
+					"readOnly": true,
+					"calculation": {
+						"func": "getFrom",
+						"def": null,
+						"args": {
+							"path": "player.club",
+							"obj": {
+								"func": "getAsObjectLink",
+								"args": {
+									"schemaUri": "uri://registries/people#views/player/view",
+									"fields": {
+										"name": "club.name"
+									},
+									"objectId": {
+										"func": "get",
+										"watch": true,
+										"args": {
+											"path": "baseData.player.oid"
+										}
+									}
+								}
+							}	
+						}
+					},
 					"objectLink2": {
 						"schema": "uri://registries/organizations#views/club/view",
 						"fields": {
