@@ -39,6 +39,32 @@
 						"component": "psui-selectbox",
 						"searchable": true
 					}
+				},
+				"countOfSets": {
+					"title": "Počet setov",
+					"transCode": "schema.competitionPart.countOfSets",
+					"type": "string"
+				},
+				"competitionModel": {
+					"title": "Model súťaže",
+					"transCode": "schema.competitionPart.competitionModel",
+					"type": "string",
+					"enum": [
+						"Model-01",
+						"Model-02",
+						"Model-03",
+						"Model-04"
+					],
+					"enumTransCodes":[
+						"schema.competitionPart.competitionModel.model-1",
+						"schema.competitionPart.competitionModel.model-2",
+						"schema.competitionPart.competitionModel.model-3",
+						"schema.competitionPart.competitionModel.model-4"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
 				}
 			}
 		},

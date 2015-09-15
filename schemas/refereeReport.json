@@ -101,14 +101,29 @@
 					"transCode": "schema.refereeReport.baseData.fullTimeScoreAway",
 					"type": "string"
 				},
-				"halfTimeScoreHome": {
-					"title": "Polčasové skóre domáci",
-					"transCode": "schema.refereeReport.baseData.halfTimeScoreHome",
+				"ballsFirstSet": {
+					"title": "Lopty 1.set",
+					"transCode": "schema.refereeReport.baseData.ballsFirstSet",
 					"type": "string"
 				},
-				"halfTimeScoreAway": {
-					"title": "Polčasové skóre hostia",
-					"transCode": "schema.refereeReport.baseData.halfTimeScoreAway",
+				"ballsSecondSet": {
+					"title": "Lopty 2.set",
+					"transCode": "schema.refereeReport.baseData.ballsSecondSet",
+					"type": "string"
+				},
+				"ballsThirdSet": {
+					"title": "Lopty 3.set",
+					"transCode": "schema.refereeReport.baseData.ballsThirdSet",
+					"type": "string"
+				},
+				"ballsFourthSet": {
+					"title": "Lopty 4.set",
+					"transCode": "schema.refereeReport.baseData.ballsFourthSet",
+					"type": "string"
+				},
+				"ballsFifthSet": {
+					"title": "Lopty 5.set",
+					"transCode": "schema.refereeReport.baseData.ballsFifthSet",
 					"type": "string"
 				},
 				"attendance": {
@@ -124,61 +139,6 @@
 						"schema":"uri://registries/stadiums#views/stadium/view",
 						"fields":{
 							"name": "baseData.name"
-						}
-					}
-				}
-			}
-		},
-		"responsiblePeople": {
-			"title": "Zodpovedné osoby",
-			"transCode": "schema.refereeReport.responsiblePeople",
-			"type": "object",
-			"properties": {
-				"mainOrganizer": {
-					"title": "Zapisovateľ",
-					"transCode": "schema.refereeReport.responsiblePeople.mainOrganizer",
-					"type": "object",
-					"objectLink2": {
-						"schema":"uri://registries/people#views/fullperson-km/view",
-						"fields":{
-							"surName": "baseData.surName",
-							"firstName": "baseData.name"
-						}
-					}
-				},
-				"timekeeper": {
-					"title": "Časomerač",
-					"transCode": "schema.refereeReport.responsiblePeople.timekeeper",
-					"type": "object",
-					"objectLink2": {
-						"schema":"uri://registries/people#views/fullperson-km/view",
-						"fields":{
-							"surName": "baseData.surName",
-							"firstName": "baseData.name"
-						}
-					}
-				},
-				"medic": {
-					"title": "Zdravotná služba",
-					"transCode": "schema.refereeReport.responsiblePeople.medic",
-					"type": "object",
-					"objectLink2": {
-						"schema":"uri://registries/people#views/fullperson-km/view",
-						"fields":{
-							"surName": "baseData.surName",
-							"firstName": "baseData.name"
-						}
-					}
-				},
-				"speaker": {
-					"title": "Hlásateľ",
-					"transCode": "schema.refereeReport.responsiblePeople.speaker",
-					"type": "object",
-					"objectLink2": {
-						"schema":"uri://registries/people#views/fullperson-km/view",
-						"fields":{
-							"surName": "baseData.surName",
-							"firstName": "baseData.name"
 						}
 					}
 				}
@@ -256,11 +216,6 @@
 						"component": "psui-selectbox",
 						"searchable": true
 					}
-				},
-				"webNumber": {
-					"title": "Číslo webu",
-					"transCode": "schema.refereeReport.delegatedPerson.webNumber",
-					"type": "string"
 				}
 			}
 		},
@@ -396,7 +351,7 @@
 							"title": "Hráč",
 							"transCode": "schema.refereeReport.listOfPlayers.player",
 							"objectLink2": {
-								"schema": "uri://registries/people#views/player/view",
+								"schema": "uri://registries/people#views/player-km/view",
 								"fields": {
 									"surName": "baseData.surName",
 									"firstName": "baseData.name",
@@ -479,9 +434,6 @@
 			"properties": {
 				"baseData":{
 					"$ref":"uri://registries/refereeReports#blocks/baseData"
-				},
-				"responsiblePeople":{
-					"$ref":"uri://registries/refereeReports#blocks/responsiblePeople"
 				},
 				"delegatedPerson":{
 					"$ref":"uri://registries/refereeReports#blocks/delegatedPerson"
