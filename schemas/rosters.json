@@ -297,7 +297,7 @@
 								"width": "wide"
 							},
 							"objectLink2": {
-								"schema": "uri://registries/people#views/player/view",
+								"schema": "uri://registries/people#views/player-km/view",
 								"fields": {
 									"surName": "baseData.surName",
 									"firstName": "baseData.name",
