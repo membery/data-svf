@@ -1,7 +1,6 @@
 {
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/competitionPart#",
-
 	"blocks": {
 		"baseData": {
 			"title": "Základné údaje",
@@ -32,17 +31,35 @@
 					"type": "string",
 					"required": true,
 					"enum": [
-						"Manuálny",
-						"Berger"
+						"MANUAL",
+						"BERGER_BASE",
+						"BERGER_SAME_PAIR_TWICE"
+					],
+					"enumTransCodes":[
+						"schema.competitionPart.typeOfCompetition.manual",
+						"schema.competitionPart.typeOfCompetition.berger-base",
+						"schema.competitionPart.typeOfCompetition.berger-same-pair-twice"
 					],
 					"render": {
 						"component": "psui-selectbox",
 						"searchable": true
 					}
 				},
-				"countOfSets": {
-					"title": "Počet setov",
-					"transCode": "schema.competitionPart.countOfSets",
+				"matchIDForNotPlayingTeam": {
+					"extends":"uri://registries/commonenums#blocks/boolean",
+					"title": "Číslovať volný zápas?",
+					"transCode": "schema.competitionPart.matchIDForNotPlayingTeam",
+					"required": true
+				},
+				"matchIDNullBeforeSecondHalf": {
+					"extends":"uri://registries/commonenums#blocks/boolean",
+					"title": "Vynulovať počítadlo zápasov pred odvetnou časťou?",
+					"transCode": "schema.competitionPart.matchIDNullBeforeSecondHalf",
+					"required": true
+				},
+				"prefix": {
+					"title": "Prefix",
+					"transCode": "schema.competitionPart.prefix",
 					"type": "string"
 				},
 				"competitionModel": {
@@ -52,14 +69,12 @@
 					"enum": [
 						"Model-01",
 						"Model-02",
-						"Model-03",
-						"Model-04"
+						"Model-03"
 					],
 					"enumTransCodes":[
 						"schema.competitionPart.competitionModel.model-1",
 						"schema.competitionPart.competitionModel.model-2",
-						"schema.competitionPart.competitionModel.model-3",
-						"schema.competitionPart.competitionModel.model-4"
+						"schema.competitionPart.competitionModel.model-3"
 					],
 					"render": {
 						"component": "psui-selectbox",

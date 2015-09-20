@@ -19,6 +19,18 @@
 						}
 					}
 				},
+				"season": {
+					"type":"object",
+					"title": "Súťažný ročnik",
+					"transCode":"schema.refereeReport.baseData.season",
+					"required": true,
+					"objectLink2": {
+						"schema":"uri://registries/seasons#views/seasons/view",
+						"fields":{
+							"name": "baseData.name"
+						}
+					}
+				},
 				"competitionPart": {
 					"title": "Časť súťaže",
 					"transCode": "schema.refereeReport.baseData.competitionPart",
@@ -101,29 +113,9 @@
 					"transCode": "schema.refereeReport.baseData.fullTimeScoreAway",
 					"type": "string"
 				},
-				"ballsFirstSet": {
-					"title": "Lopty 1.set",
-					"transCode": "schema.refereeReport.baseData.ballsFirstSet",
-					"type": "string"
-				},
-				"ballsSecondSet": {
-					"title": "Lopty 2.set",
-					"transCode": "schema.refereeReport.baseData.ballsSecondSet",
-					"type": "string"
-				},
-				"ballsThirdSet": {
-					"title": "Lopty 3.set",
-					"transCode": "schema.refereeReport.baseData.ballsThirdSet",
-					"type": "string"
-				},
-				"ballsFourthSet": {
-					"title": "Lopty 4.set",
-					"transCode": "schema.refereeReport.baseData.ballsFourthSet",
-					"type": "string"
-				},
-				"ballsFifthSet": {
-					"title": "Lopty 5.set",
-					"transCode": "schema.refereeReport.baseData.ballsFifthSet",
+				"countOfBalls": {
+					"title": "Počet lôpt",
+					"transCode": "schema.refereeReport.baseData.countOfBalls",
 					"type": "string"
 				},
 				"attendance": {
@@ -140,6 +132,26 @@
 						"fields":{
 							"name": "baseData.name"
 						}
+					}
+				},
+				"matchNumber": {
+					"title": "Číslo zápasu",
+					"transCode": "schema.refereeReport.baseData.matchNumber",
+					"type": "string"
+				},
+				"state": {
+					"title": "Stav",
+					"transCode": "schema.refereeReport.baseData.state",
+					"type": "string",
+					"required": true,
+					"enum": [
+						"Otvorený",
+						"Schválený",
+						"Zatvorený"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
 					}
 				}
 			}
@@ -201,21 +213,6 @@
 					"title": "Supervizor",
 					"transCode": "schema.refereeReport.delegatedPerson.supervisor",
 					"type": "string"
-				},
-				"state": {
-					"title": "Stav",
-					"transCode": "schema.refereeReport.delegatedPerson.state",
-					"type": "string",
-					"required": true,
-					"enum": [
-						"Otvorený",
-						"Schválený",
-						"Zatvorený"
-					],
-					"render": {
-						"component": "psui-selectbox",
-						"searchable": true
-					}
 				}
 			}
 		},
@@ -517,6 +514,11 @@
 				],
 				"listFields": [
 					{
+						"field": "baseData.matchNumber",
+						"title": "Číslo zápasu",
+						"transCode": "schema.refereeReport.baseData.matchNumber"
+					},
+					{
 						"field": "baseData.homeClub",
 						"title": "Domáce družstvo",
 						"transCode": "schema.refereeReport.listFields.homeClub"
@@ -538,6 +540,11 @@
 						"field": "baseData.matchDate",
 						"title": "Termín stretnutia",
 						"transCode": "schema.refereeReport.baseData.matchDate"
+					},
+					{
+						"field": "baseData.matchRound",
+						"title": "Kolo",
+						"transCode": "schema.refereeReport.baseData.matchRound"
 					}
 				]
 			}
@@ -622,6 +629,11 @@
 				],
 				"listFields": [
 					{
+						"field": "baseData.matchNumber",
+						"title": "Číslo zápasu",
+						"transCode": "schema.refereeReport.baseData.matchNumber"
+					},
+					{
 						"field": "baseData.homeClub",
 						"title": "Domáce družstvo",
 						"transCode": "schema.refereeReport.listFields.homeClub"
@@ -643,6 +655,11 @@
 						"field": "baseData.matchDate",
 						"title": "Termín stretnutia",
 						"transCode": "schema.refereeReport.baseData.matchDate"
+					},
+					{
+						"field": "baseData.matchRound",
+						"title": "Kolo",
+						"transCode": "schema.refereeReport.baseData.matchRound"
 					}
 				]
 			}

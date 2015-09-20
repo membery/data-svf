@@ -28,6 +28,11 @@
 				"type": "boolean",
 				"default": true
 			},
+			"Registry Association":{
+				"title": "Zobrazenie registru Zväzy v menu",
+				"type": "boolean",
+				"default": true
+			},
 			"Registry Stadium": {
 				"title": "Zobrazenie registru Štadióny v menu",
 				"type": "boolean",
@@ -38,13 +43,28 @@
 				"type": "boolean",
 				"default": true
 			},
+			"Registry Transfer":{
+				"title": "Zobrazenie registru Transferov v menu",
+				"type": "boolean",
+				"default": true
+			},
 			"Registry Competitions": {
 				"title": "Zobrazenie registru Súťaže v menu",
 				"type": "boolean",
 				"default": true
 			},
+			"Registry Requests Solver": {
+				"title": "Zobrazenie registru Riešenie žiadosti v menu",
+				"type": "boolean",
+				"default": true
+			},
 			"Registry Requests": {
 				"title": "Zobrazenie registru Podanie Žiadosti v menu",
+				"type": "boolean",
+				"default": true
+			},
+			"Registry Permissions": {
+				"title": "Zobrazenie registru Opravnenia v menu",
 				"type": "boolean",
 				"default": true
 			},

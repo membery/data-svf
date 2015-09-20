@@ -67,10 +67,9 @@
 					}
 				},
 				"teamManager": {
-					"title": "Hráč",
+					"title": "Tímový manažér",
 					"transCode": "schema.roster.teamManager",
 					"type": "object",
-					"required": true,
 					"objectLink2": {
 						"schema": "uri://registries/people#views/fullperson/view",
 						"fields": {
@@ -292,17 +291,18 @@
 					"items": {
 						"player": {
 							"title": "Hráč",
-							"transCode": "schema.roster.player",
+							"transCode": "schema.roster.players",
 							"render": {
 								"width": "wide"
 							},
 							"objectLink2": {
-								"schema": "uri://registries/people#views/player-km/view",
+								"schema": "uri://registries/people#views/player/view",
 								"fields": {
 									"surName": "baseData.surName",
 									"firstName": "baseData.name",
 									"birthDate": "baseData.birthDate",
-									"playerLicense": "player.playerLicense"
+									"playerLicense": "player.playerLicense",
+									"registrationID": "baseData.registrationID"
 								}
 							}
 						}
