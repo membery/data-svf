@@ -1,0 +1,279 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="portal/css/portal.css">
+    </head>
+    <body>
+	<div class="portal-header">
+		<h1><img src="/portal/img/logo.jpg">VolleyNET</h1>
+	</div>
+	<div class="portal-content">
+		<div class="portal-block portal-block-matches">
+			<div class="portal-block-header">Najbližšie zápasy</div>
+			<div class="portal-block-content">
+				<div class="portal-matches">
+					<div class="portal-matches-selector-div"><select class="portal-matches-selector"></select></div>
+					<div class="portal-matches-row">
+					</div><!-- portal matcher row -->
+				</div><!-- portal-matches -->
+			</div>
+		</div>
+		<div class="portal-block portal-block-results">
+			<div class="portal-block-header">Tabuľky</div>
+			<div class="portal-block-content">
+				<div class="portal-results">
+					<div class="portal-results-selector-div"><select class="portal-results-selector"></select></div>
+					<div class="portal-results-data">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="portal-block portal-block-schedule">
+			<div class="portal-block-header">Rozpis zápasov</div>
+			<div class="portal-block-content">
+				<div class="portal-schedule">
+					<div class="portal-schedule-selector-div"><select class="portal-schedule-selector"></select></div>
+					<div class="portal-schedule-data">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="portal-footer">&copy; Slovenská volejbalová federácia, Powered by <img src="/portal/img/membery.png"></div>
+    </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(function() {
+	$('.portal-results').bind('competition-results-show', function() {
+			var cid = $(this).find('.portal-results-selector').val();
+			var that = this;
+
+			if (cid) {
+				$.get('/competition/results/'+cid, function(data) {
+					
+					data.sort(function(a,b) {
+						if (b.points - a.points === 0) {
+							if (a.matches - b.matches === 0) {
+								return b.score - a.score;
+							} else {
+								return a.matches - b.matches;
+							}
+
+						} else {
+							return b.points - a.points;
+						}
+					});
+
+					var table = $(that).find('.portal-results-data');
+
+					table.empty();
+
+					var counter = 0;
+					for (var i in data) {
+
+						var e = $('<div class="portal-results-row"><div class="portal-results-num">' + (++counter) + '</div><div class="portal-results-club">' + data[i].name + '</div><div class="portal-results-matches">' + data[i].matches + 'z</div><div class="portal-results-points">' + data[i].points + '</div></div>');
+
+						table.append(e);
+					}
+				});
+			}
+		});
+
+		$('.portal-results').find('.portal-results-selector').on('change', function() {
+			$(this).closest('.portal-results').trigger('competition-results-show');
+	 	});
+
+
+		$.get('/competition/list', function(data) {
+			data.sort(function(a,b) {
+				if (a.lvl === b.lvl) {
+					return a.name.localeCompare(b.name);
+				} else {
+					return a.lvl - b.lvl;
+				}
+			});
+
+			$('.portal-results').find('.portal-results-selector').empty();
+			for (var i in data) {
+				$('.portal-results').find('.portal-results-selector').append('<option value="'+data[i].id+'">'+ data[i].name +'</option>');
+			}
+			$('.portal-results').find('.portal-results-selector').trigger('change');
+		});
+});
+
+$(function() {
+	$('.portal-matches').find('.portal-matches-selector').on('change', function() {
+		$(this).closest('.portal-matches').trigger('competition-matches-show');
+	});
+
+	//get competitions
+	$.get('/competition/list', function(data) {
+		data.sort(function(a,b) {
+			if (a.lvl === b.lvl) {
+				return a.name.localeCompare(b.name);
+			} else {
+				return a.lvl - b.lvl;
+			}
+		});
+
+		$('.portal-matches').find('.portal-matches-selector').empty();
+		for (var i in data) {
+			$('.portal-matches').find('.portal-matches-selector').append('<option value="'+data[i].id+'">'+ data[i].name + '</option>');
+		}
+		$('.portal-matches').find('.portal-matches-selector').trigger('change');
+	});
+
+	$('.portal-matches').bind('competition-matches-show', function() {
+		var cid = $(this).find('.portal-matches-selector').val();
+		var that = this;
+
+		if (cid) {
+			$.get('/competition/matches/'+cid, function(data) {
+				function formatDate(d) {
+					return d.substr(6,2) + '.' +d.substr(4,2) + '.' + d.substr(0,4);
+				}
+
+				var tblContainer = $(that).find('.portal-matches-row');
+
+				tblContainer.empty();
+
+				var lastDate = null;
+				var position = 0;
+				for (var i in data) {
+					var currDate = formatDate(data[i].matchDate);
+					if (lastDate !== currDate) {
+						var table = $('<div class="portal-matches-block"></div>');
+						tblContainer.append(table);
+						table.append('<div class="portal-matches-title">'+currDate+'</td></tr>');
+						lastDate = currDate;
+						position++;
+					}
+					position++;
+
+					var fragment;
+
+					if (!data[i].finished) {
+						fragment = '<div class="portal-match">' +
+								'<div class="portal-match-home">' + data[i].homeName + '</div>' +
+								'<div class="portal-match-notplayed">' +
+									'<div class="portal-match-notplayed-time">' + (data[i].matchTime || '-') + '</div>' +
+								'</div>' +
+								'<div class="portal-match-guest">' + data[i].guestName + '</div>' +
+							'</div>';
+					} else {
+						fragment =
+							'<div class="portal-match">' +
+								'<div class="portal-match-home">' + data[i].homeName + '</div>' +
+								'<div class="portal-match-score-block">' +
+									'<div class="portal-match-score">' +
+										'<div class="portal-match-score-home">' + (data[i].fullTimeScoreHome || '0') + '</div>' +
+										'<div class="portal-match-score-hyphen">:</div>' +
+										'<div class="portal-match-score-away">' + (data[i].fullTimeScoreAway || '0') + '</div>' +
+									'</div>' +
+									'<div class="portal-match-score-balls">' + (data[i].additionalScore || '') + '</div>' +
+								'</div>' +
+								'<div class="portal-match-guest">' + data[i].guestName + '</div>' +
+							'</div>';
+					}
+
+					var e = $(fragment);
+
+					table.append(e);
+				}
+			});
+		}
+	});
+});
+$(function() {
+	$('.portal-schedule').find('.portal-schedule-selector').on('change', function() {
+		$(this).closest('.portal-schedule').trigger('competition-matches-show');
+	});
+
+	//get competitions
+	$.get('/competition/list', function(data) {
+		data.sort(function(a,b) {
+			if (a.lvl === b.lvl) {
+				return a.name.localeCompare(b.name);
+			} else {
+				return a.lvl - b.lvl;
+			}
+		});
+
+		$('.portal-schedule').find('.portal-schedule-selector').empty();
+		for (var i in data) {
+			$('.portal-schedule').find('.portal-schedule-selector').append('<option value="'+data[i].id+'">'+ data[i].name + '</option>');
+		}
+		$('.portal-schedule').find('.portal-schedule-selector').trigger('change');
+	});
+
+	$('.portal-schedule').bind('competition-matches-show', function() {
+		var cid = $(this).find('.portal-schedule-selector').val();
+		var that = this;
+
+		if (cid) {
+			$.get('/competition/matches-all/'+cid, function(data) {
+				function formatDate(d) {
+					return d.substr(6,2) + '.' +d.substr(4,2) + '.' + d.substr(0,4);
+				}
+
+				var tblContainer = $(that).find('.portal-schedule-data');
+
+				tblContainer.empty();
+
+				var sRounds = Object.keys(data).sort();
+				var lastDate = null;
+				var position = 0;
+				for (var r in sRounds) {
+					var round = data[sRounds[r]];
+
+					tblContainer.append('<div class="portal-schedule-round">'+sRounds[r]+'</div>');
+					for (var m in round) {
+						var match = round[m];
+
+						if (match.finished) {
+							tblContainer.append(
+								'<div class="portal-schedule-row">' +
+									'<div class="portal-schedule-dt">' +
+										'<div class="portal-schedule-date">' + formatDate(match.matchDate) + '</div>' +
+										'<div class="portal-schedule-time">' + (match.matchTime || '-') + '</div>' +
+									'</div>' +
+									'<div class="portal-schedule-match">' +
+									'<div class="portal-schedule-home">' + match.homeName + '</div>' +
+									'<div class="portal-schedule-score"><div class="portal-schedule-score-home">'+(match.fullTimeScoreHome || '_')+'</div>' +
+										'<div class="portal-schedule-score-hyphen">:</div>' +
+										'<div class="portal-schedule-score-away">'+(match.fullTimeScoreAway || '_')+'</div>'+
+										'<div class="portal-schedule-score-balls">'+(match.additionalScore || '')+'</div></div>' +
+										'<div class="portal-schedule-away">'+match.guestName+'</div></div></div>');
+						} else {
+							tblContainer.append(
+								'<div class="portal-schedule-row">' +
+									'<div class="portal-schedule-dt">' +
+										'<div class="portal-schedule-date">' + formatDate(match.matchDate) + '</div>' +
+										'<div class="portal-schedule-time">' + (match.matchTime || '-') + '</div>' +
+									'</div>' +
+									'<div class="portal-schedule-match">' +
+									'<div class="portal-schedule-home">' + match.homeName + '</div>' +
+									'<div class="portal-schedule-score"><div class="portal-schedule-score-home">'+(match.fullTimeScoreHome || '_')+'</div>' +
+										'<div class="portal-schedule-score-hyphen">:</div>' +
+										'<div class="portal-schedule-score-away">'+(match.fullTimeScoreAway || '_')+'</div>'+
+										'<div class="portal-schedule-score-balls">'+(match.additionalScore || '')+'</div></div>' +
+										'<div class="portal-schedule-away">'+match.guestName+'</div></div></div>');
+						}
+					}
+				}
+			});
+		}
+	});
+});
+
+</script>
+</html>
