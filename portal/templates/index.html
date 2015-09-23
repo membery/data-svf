@@ -229,7 +229,9 @@ $(function() {
 
 				tblContainer.empty();
 
-				var sRounds = Object.keys(data).sort();
+				var sRounds = Object.keys(data).sort(function(a,b) {
+					return parseInt(a)-parseInt(b);
+				});
 				var lastDate = null;
 				var position = 0;
 				for (var r in sRounds) {
