@@ -437,6 +437,7 @@ html,body {
 	display: -ms-flexbox;
 	display: flex;
 	padding-bottom: 5px;
+	min-height: 14px;
 }
 .portal-results-num {
 	-webkit-box-flex: 0;
@@ -561,6 +562,7 @@ html,body {
 	    -ms-flex-align: center;
 	        align-items: center;
 	padding-top: 5px;
+	min-height: 32px;
 	
 }
 .portal-schedule-date {
