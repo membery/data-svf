@@ -303,6 +303,25 @@
 									"birthDate": "baseData.birthDate",
 									"playerLicense": "player.playerLicense",
 									"registrationID": "baseData.registrationID"
+								},
+								"calculatedCriteria": {
+									"func": "criteriaList",
+									"watch": ["baseData.club.oid"],
+									"args": [{
+										"func": "criterion",
+										"args": {
+											"f": "player.club.oid",
+											"op": "eq",
+											"v": {
+												"func": "get",
+												"args": {
+													"modelPath": "baseData.club.oid",
+													"default": null
+												}
+											},
+											"nullIfEmpty": true
+										}
+									}]
 								}
 							}
 						}

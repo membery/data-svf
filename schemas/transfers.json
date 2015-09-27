@@ -36,7 +36,7 @@
 					"readOnly": true,
 					"calculation": {
 						"func": "getFrom",
-						"def": null,
+						"watch": ["baseData.player"],
 						"args": {
 							"path": "player.club",
 							"obj": {
@@ -48,9 +48,8 @@
 									},
 									"objectId": {
 										"func": "get",
-										"watch": true,
 										"args": {
-											"path": "baseData.player.oid"
+											"modelPath": "baseData.player.oid"
 										}
 									}
 								}
@@ -209,7 +208,19 @@
 				"extends": "uri://registries/transfers#models/transfers"
 			},
 			"view": {
-				"extends": "uri://registries/transfers#models/transfers"
+				"extends": "uri://registries/transfers#models/transfers",
+				"properties" : {
+					"baseData": {
+						"properties": {
+							"player": {
+								"readOnly": true
+							},
+							"clubFrom": {
+								"calculation": null
+							}
+						}
+					}
+				}
 			},
 			"search": {
 				"extends": "uri://registries/transfers#models/transfers",
