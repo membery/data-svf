@@ -108,10 +108,11 @@
 		</ul>
 	</li>
 
-	<li ng-show="hasPermissions(['Portal - write'])" ><a href="#" class="x-submenu-toggle"><i class="icon-info-circle fa-2x"></i><span>Web Portál</span></a>
+	<li ng-show="hasPermissions(['Portal - write'])" ><a href="#" class="x-submenu-toggle"><i class="icon-info-circle fa-2x"></i><span>{{'menu.portal.title' | translate}}</span></a>
 		<ul>
-			<li><a href="#/portal/edit"><span>Editovať</span></a></li>
-			<li><a href="#/portal/menu"><span>Menu</span></a></li>
+			<li><a href="#/portal/edit"><span>{{'portal.edit.edit' | translate}}</span></a></li>
+			<li><a href="#/portal/menu"><span>{{'portal.menu.title' | translate}}</span></a></li>
+			<li><a href="#/registry/search/{{'uri://registries/portalArticles#search'|xpsuiuriescape}}"><span>{{'portal.article.list' | translate}}</span></a></li>
 		</ul>
 	</li>
 </ul>
