@@ -35,6 +35,10 @@
 			"menu.search.club.person.lower.level": "Hľadať člena klubu",
 			"menu.requests.search.transferFromClub.lower.level": "Hľadať transfer z klubu",
 			"menu.logins.lower.level": "História prihlásení",
+			"menu.portal.title":"Web portál",
+			"portal.edit.edit":"Editovať",
+			"portal.menu.title":"Menu",
+			"portal.article.list":"Zoznam článkov",
 
 			"schema.towns.town":"Obec",
 			"schema.member.view":"Osoba",
@@ -501,7 +505,15 @@
 			"schema.pastLogins.userId": "ID používateľa",
 			"schema.pastLogins.userName": "Prihlasovacie meno",
 			"schema.pastLogins.ip": "IP Adresa",
-			"schema.pastLogins.created": "Dátum vytvorenia tokenu"
+			"schema.pastLogins.created": "Dátum vytvorenia tokenu",
+
+			"schema.portalArticles.title":"Zoznam článkov",
+			"schema.portalArticles.meta":"Základné údaje",
+			"schema.portalArticles.title":"Názov",
+			"schema.portalArticles.tags":"Tagy",
+			"schema.portalArticles.template":"Template",
+			"schema.portalArticles.publishFrom":"Dátum uverejnenia",
+			"schema.portalArticles.enabled":"Publikovať?"
 		});
 		
 		$translateProvider.translations('cz', {
@@ -509,6 +521,9 @@
 			"menu.search.club.person.lower.level": "Hľadať člena klubu",
 			"menu.requests.search.transferFromClub.lower.level": "Hľadať transfer z klubu",
 			"menu.logins.lower.level": "História prihlásení",
+			"portal.edit.edit":"Editovať",
+			"portal.menu.title":"Menu",
+			"portal.article.list":"Seznam článků",
 			
 			"schema.towns.town":"Obec",
 			"schema.member.view":"Osoba",
@@ -975,7 +990,15 @@
 			"schema.pastLogins.userId": "ID uživatele",
 			"schema.pastLogins.userName": "Přihlašovací jméno",
 			"schema.pastLogins.ip": "IP Adresa",
-			"schema.pastLogins.created": "Datum vytvoření tokenu"
+			"schema.pastLogins.created": "Datum vytvoření tokenu",
+
+			"schema.portalArticles.title":"Seznam článkú",
+			"schema.portalArticles.meta":"Základní údaje",
+			"schema.portalArticles.title":"Názév",
+			"schema.portalArticles.tags":"Tagy",
+			"schema.portalArticles.template":"Template",
+			"schema.portalArticles.publishFrom":"Datum zveřejnění",
+			"schema.portalArticles.enabled":"Publikovat?"
 		});
 	}]);
 }(angular));
