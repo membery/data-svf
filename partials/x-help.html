@@ -1,5 +1,15 @@
 <div class="flex-form-fieldset-search-box">
 </div><div class=x-form-title>Help</div>
+<!--- This is for QR Code generation -->
+	<div ng-show="loggedin">
+		<div data-ng-init="genQrcode('dataset/get/mobileContents/banner.dat')">
+		<h1>QR Code for accessing Membery</h1>
+		<p>
+		<center><qr type-number="8" correction-level="'M'" size="200" input-mode="ALPHA_NUM" text="qrcode" image="true" ng-if="qrcode"></qr>
+		</center>
+		</div>
+	</div>
+<!--- This is for QR Code generation -->
 <ol>
 <li>Contact
 <ul>
