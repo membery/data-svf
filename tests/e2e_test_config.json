@@ -1,0 +1,114 @@
+{
+	"schemas": {
+		"people": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fpeople~23views~2Ffullperson~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fpeople~23views~2Ffullperson~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 0,
+			"createNo": 0,
+			"findNo": 1,
+			"dependencies": ["club","association"]
+		},
+		"stadium": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fstadiums~23views~2Fstadium~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fstadiums~23views~2Fstadium~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 1,
+			"createNo": 0,
+			"findNo": 1,
+			"dependencies": []
+		},
+		"club": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fclub~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fclub~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 2,
+			"createNo": 0,
+			"findNo": 1,
+			"dependencies": ["association"]
+		},
+		"association": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fassociation~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fassociation~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 3,
+			"createNo": 0,
+			"findNo": 1,
+			"dependencies": ["association"]
+		},
+		"rosters": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Frosters~23views~2Frosters~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Frosters~23views~2Frosters~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 5,
+			"createNo": 0,
+			"findNo": 1,
+			"dependencies": ["stadium","club","association","people:coach:statistic:referee:medic","ageCategory","seasons","competitions"]
+		},
+		"competitions": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fcompetitions~23views~2Fcompetitions~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fcompetitions~23views~2Fcompetitions~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 6,
+			"createNo": 0,
+			"findNo": 1,
+			"dependencies": ["ageCategory","seasons"]
+		},
+		"competitionsPart": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2FcompetitionPart~23views~2FcompetitionPart~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2FcompetitionPart~23views~2FcompetitionPart~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 6,
+			"createNo": 2,
+			"findNo": 3,
+			"dependencies": ["seasons","ageCategory","competitions"]
+		},
+		"schedule": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fschedule~23views~2Fschedule~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fschedule~23views~2Fschedule~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 6,
+			"createNo": 4,
+			"findNo": 5,
+			"dependencies": ["ageCategory","seasons","competitions","competitionsPart"]
+		},
+		"refereeReports": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2FrefereeReports~23views~2FrefereeReports~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2FrefereeReports~23views~2FrefereeReports~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 6,
+			"createNo": 6,
+			"findNo": 7,
+			"dependencies": ["stadium","club","association","ageCategory","seasons","competitions","competitionsPart","schedule","people","rosters"]
+		},
+		"seasons": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fseasons~23views~2Fseasons~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2Fseasons~23views~2Fseasons~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 6,
+			"createNo": 9,
+			"findNo": 10,
+			"dependencies": []
+		},
+		"ageCategory": {
+			"new": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2FageCategory~23views~2FageCategory~2Fnew",
+			"search": "http://localhost:3000/schema/compiled/uri~3A~2F~2Fregistries~2FageCategory~23views~2FageCategory~2Fsearch",
+			"newSchema": "",
+			"searchSchema":"",
+			"listNo": 6,
+			"createNo": 11,
+			"findNo": 12,
+			"dependencies": []
+		}
+	}
+}
