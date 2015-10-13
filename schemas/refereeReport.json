@@ -118,6 +118,11 @@
 					"transCode": "schema.refereeReport.baseData.countOfBalls",
 					"type": "string"
 				},
+				"contumacy": {
+					"extends":"uri://registries/commonenums#blocks/boolean",
+					"title": "Kontumácia",
+					"transCode": "schema.refereeReport.baseData.contumacy"
+				},
 				"attendance": {
 					"title": "Návštevnosť",
 					"transCode": "schema.refereeReport.baseData.attendance",
