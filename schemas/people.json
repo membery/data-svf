@@ -1008,6 +1008,9 @@
 							"isPlayer": {
 								"readOnly": true
 							},
+							"playerLicense":{
+								"readOnly": true
+							},
 							"clubOfFirstRegistration": {
 								"readOnly": true
 							},
@@ -1054,6 +1057,9 @@
 							"club": {
 								"readOnly": true
 							},
+							"association": {
+								"readOnly": true
+							},
 							"note": {
 								"readOnly": true
 							},
@@ -1069,6 +1075,11 @@
 							"dateOfApplicationForId": {
 								"readOnly": true
 							}
+						}
+					},
+					"otherInfo":{
+						"properties": {
+							"note":null
 						}
 					}
 				}
@@ -1089,9 +1100,9 @@
 				},
 				"listFields": [
 					{
-						"field": "baseData.registrationID",
-						"title": "Registračné číslo",
-						"transCode":"schema.people.registrationID"
+						"field": "player.playerLicense",
+						"title": "Číslo HL",
+						"transCode":"schema.people.player.playerLicense"
 					},
 					{
 						"field": "baseData.surName",
@@ -1109,14 +1120,9 @@
 						"transCode":"schema.people.birthDate"
 					},
 					{
-						"field": "player.clubOfFirstRegistration",
-						"title": "Materský klub",
-						"transCode":"schema.people.player.clubOfFirstRegistration"
-					},
-					{
-						"field": "player.club",
-						"title": "Klubová príslušnosť",
-						"transCode":"schema.people.player.club"
+						"field": "contactInfo.city",
+						"title": "Mesto",
+						"transCode":"schema.people.city"
 					}
 				]
 			}
@@ -1417,7 +1423,9 @@
 							},
 							"birthDate": null,
 							"id": null,
+							"bornName": null,
 							"titleBefore": null,
+							"titleAfter": null,
 							"stateofPerson": null,
 							"nationality": null
 						}
@@ -1425,6 +1433,9 @@
 					"player": {
 						"properties": {
 							"isPlayer":{
+								"readOnly": true
+							},
+							"playerLicense":{
 								"readOnly": true
 							},
 							"clubOfFirstRegistration":{
@@ -1447,7 +1458,6 @@
 							},
 							"expirationOfProffesionalContract": null,
 							"modifiedOn": null,
-							"playerLicense": null,
 							"expirationOfAgentContract": null,
 							"expiration": null,
 							"registrationCanceled": null,
@@ -1476,44 +1486,29 @@
 				"title": "Hráč",
 				"listFields": [
 					{
-						"field": "baseData.registrationID",
-						"title": "Registračné číslo",
-						"transCode": "schema.people.registrationID"
+						"field": "player.playerLicense",
+						"title": "Číslo HL",
+						"transCode":"schema.people.player.playerLicense"
 					},
 					{
 						"field": "baseData.surName",
 						"title": "Priezvisko",
-						"transCode": "schema.people.surName"
+						"transCode":"schema.people.surName"
 					},
 					{
 						"field": "baseData.name",
 						"title": "Meno",
-						"transCode": "schema.people.name"
+						"transCode":"schema.people.name"
 					},
 					{
 						"field": "baseData.birthDate",
 						"title": "Dátum narodenia",
-						"transCode": "schema.people.birthDate"
+						"transCode":"schema.people.birthDate"
 					},
 					{
-						"field": "player.clubOfFirstRegistration",
-						"title": "Materský klub",
-						"transCode": "schema.people.player.clubOfFirstRegistration"
-					},
-					{
-						"field": "player.club",
-						"title": "Klubová príslušnosť",
-						"transCode": "schema.people.player.club"
-					},
-					{
-						"field": "player.hostingStartDate",
-						"title": "Dátum začiatku hosťovania",
-						"transCode": "schema.people.player.hostingStartDate"
-					},
-					{
-						"field": "player.hostingEndDate",
-						"title": "Dátum konca hosťovania",
-						"transCode": "schema.people.player.hostingEndDate"
+						"field": "contactInfo.city",
+						"title": "Mesto",
+						"transCode":"schema.people.city"
 					}
 				]
 			}
@@ -1521,11 +1516,54 @@
 		"personalProfile":{
 			"new":{
 				"extends":"uri://registries/people#models/personalProfile",
-				"title":"Môj profil"
+				"title":"Môj profil",
+				"transCode":"schema.people.personalProfile"
 			},
 			"view":{
 				"extends":"uri://registries/people#models/personalProfile",
-				"title":"Môj profil"
+				"title":"Môj profil",
+				"transCode":"schema.people.personalProfile",
+				"properties": {
+					"baseData": {
+						"properties": {
+							"registrationID": {
+								"readOnly": true
+							},
+							"id": {
+								"readOnly": true
+							},
+							"name": {
+								"readOnly": true
+							},
+							"surName": {
+								"readOnly": true
+							},
+							"birthDate": {
+								"readOnly": true
+							},
+							"gender": {
+								"readOnly": true
+							},
+							"stateofPerson": {
+								"readOnly": true
+							}
+						}
+					},
+					"photoInfo": {
+						"properties": {
+							"photo": {
+								"readOnly": true
+							}
+						}
+					},
+					"contactInfo": {
+						"properties": {
+							"email": {
+								"readOnly": true
+							}
+						}
+					}
+				}
 			},
 			"search":{
 				"extends":"uri://registries/people#models/personalProfile",

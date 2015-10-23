@@ -478,6 +478,13 @@
 			"schema.dataChangeRequests.title":"Žiadosť o zmenu údajov",
 			"schema.transferRequests.title":"Žiadosť o transfer",
 
+			"schema.dataChangeRequests.playerLicenseRequest":"Typ žiadosti",
+			"schema.dataChangeRequests.playerLicenseRequest.issue":"vystavenie",
+			"schema.dataChangeRequests.playerLicenseRequest.revocation":"zrušenie",
+			"schema.dataChangeRequests.playerLicenseRequest.change":"zmenu",
+			"schema.dataChangeRequests.playerLicenseRequest.prolongation":"predĺženie",
+			"schema.dataChangeRequests.playerLicenseRequest.reissuedupl":"duplikát",
+
 			"schema.requests.title":"Žiadosť",
 			"schema.requests.basedata":"Základné informácie",
 			"schema.requests.basedata.applicant":"Žiadateľ",
@@ -953,6 +960,13 @@
 			"schema.registrationRequests.title":"Žiadosť o registráciu",
 			"schema.dataChangeRequests.title":"Žiadosť o zmenu údajov",
 			"schema.transferRequests.title":"Žiadosť o transfer",
+
+			"schema.dataChangeRequests.playerLicenseRequest":"Typ žiadosti",
+			"schema.dataChangeRequests.playerLicenseRequest.issue":"vystavenie",
+			"schema.dataChangeRequests.playerLicenseRequest.revocation":"zrušenie",
+			"schema.dataChangeRequests.playerLicenseRequest.change":"zmenu",
+			"schema.dataChangeRequests.playerLicenseRequest.prolongation":"predĺženie",
+			"schema.dataChangeRequests.playerLicenseRequest.reissuedupl":"duplikát",
 
 			"schema.requests.title":"Žiadosť",
 			"schema.requests.basedata":"Základné informácie",

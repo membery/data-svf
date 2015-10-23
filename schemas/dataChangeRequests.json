@@ -40,10 +40,33 @@
 							"objectLink2": {
 								"schema": "uri://registries/people#views/fullperson-km/view",
 								"fields": {
+									"playerLicense": "player.playerLicense",
 									"surName": "baseData.surName",
-									"name": "baseData.name",
-									"registrationID": "baseData.registrationID"
+									"name": "baseData.name"
 								}
+							}
+						},
+						"playerLicenseRequest": {
+							"title": "Typ žiadosti",
+							"transCode": "schema.dataChangeRequests.playerLicenseRequest",
+							"type": "string",
+							"enum": [
+								"ISSUE",
+								"REVOCATION",
+								"CHANGE",
+								"PROLONGATION",
+								"REISSUEDUPL"
+							],
+							"enumTransCodes":[
+								"schema.dataChangeRequests.playerLicenseRequest.issue",
+								"schema.dataChangeRequests.playerLicenseRequest.revocation",
+								"schema.dataChangeRequests.playerLicenseRequest.change",
+								"schema.dataChangeRequests.playerLicenseRequest.prolongation",
+								"schema.dataChangeRequests.playerLicenseRequest.reissuedupl"
+							],
+							"render": {
+								"component": "psui-selectbox",
+								"searchable": true
 							}
 						}
 					}
@@ -81,6 +104,7 @@
 						"isPlayer":{
 							"required": false
 						},
+						"playerLicense": null,
 						"clubOfFirstRegistration": null,
 						"club": null,
 						"stateOfPlayer":{

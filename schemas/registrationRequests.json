@@ -69,6 +69,7 @@
 						"validFrom": null,
 						"validTo": null,
 						"modifiedOn": null,
+						"playerLicense":null,
 						"isPlayer": {
 							"required": false
 						},
