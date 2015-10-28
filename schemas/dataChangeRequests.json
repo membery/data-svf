@@ -46,10 +46,11 @@
 								}
 							}
 						},
-						"playerLicenseRequest": {
+						"requestType": {
 							"title": "Typ žiadosti",
 							"transCode": "schema.dataChangeRequests.playerLicenseRequest",
 							"type": "string",
+							"required": true,
 							"enum": [
 								"ISSUE",
 								"REVOCATION",
@@ -122,6 +123,22 @@
 							}
 						}
 					}
+				},
+				"coach": {
+					"extends": "uri://registries/people#blocks/coach",
+					"properties": {
+						"firstYear": null,
+						"feeDate": null
+					}
+				},
+				"medic": {
+					"$ref": "uri://registries/people#blocks/medic"
+				},
+				"statistic": {
+					"$ref": "uri://registries/people#blocks/statistic"
+				},
+				"scorer": {
+					"$ref": "uri://registries/people#blocks/scorer"
 				},
 				"photoInfo": {
 					"$ref": "uri://registries/people#blocks/photoInfo"

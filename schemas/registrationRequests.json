@@ -37,29 +37,6 @@
 						"registrationID": null
 					}
 				},
-				"requestData": {
-					"extends": "uri://registries/generalRequests#blocks/requestData",
-					"properties":{
-						"subject": null,
-						"text": null,
-						"responseText": null,
-						"applicant": {
-							"readOnly": true
-						},
-						"clubApplicant": {
-							"readOnly": true
-						},
-						"assignedTo": {
-							"readOnly": true
-						},
-						"setupDate": {
-							"readOnly": true
-						},
-						"status": {
-							"readOnly": true
-						}
-					}
-				},
 				"player": {
 					"properties": {
 						"expirationOfProffesionalContract": null,
@@ -90,13 +67,28 @@
 						}
 					}
 				},
+				"coach": {
+					"properties": {
+						"proffesionalCompetence": null,
+						"firstYear": null,
+						"feeDate": null
+					}
+				},
+				"medic": {
+					"$ref": "uri://registries/people#blocks/medic"
+				},
+				"statistic": {
+					"$ref": "uri://registries/people#blocks/statistic"
+				},
 				"officer": {
 					"properties": {
 						"club": {
 							"objectLink2": {
 								"schema":"uri://registries/organizations#views/club-km/view"
 							}
-						}
+						},
+						"association": null,
+						"note": null
 					}
 				},
 				"otherInfo": {
@@ -106,7 +98,31 @@
 				},
 				"attachments": {
 					"$ref": "uri://registries/generalRequests#blocks/attachments"
-				}
+				},
+				"requestData": {
+					"extends": "uri://registries/generalRequests#blocks/requestData",
+					"properties":{
+						"subject": null,
+						"text": null,
+						"responseText": null,
+						"applicant": {
+							"readOnly": true
+						},
+						"clubApplicant": {
+							"readOnly": true
+						},
+						"assignedTo": {
+							"readOnly": true
+						},
+						"setupDate": {
+							"readOnly": true
+						},
+						"status": {
+							"readOnly": true
+						}
+					}
+				},
+				"idInfo": null
 			}
 		}
 	},
@@ -158,10 +174,12 @@
 					},
 					{
 						"field": "requestData.applicant",
+						"title": "Žiadateľ",
 						"transCode": "schema.requests.basedata.applicant"
 					},
 					{
 						"field": "requestData.status",
+						"title": "Stav",
 						"transCode": "schema.requests.basedata.status"
 					}
 				]
@@ -227,7 +245,6 @@
 						]
 					}
 				},
-				"title": "Registrácia osoby",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",

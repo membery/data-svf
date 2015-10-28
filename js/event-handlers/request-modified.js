@@ -63,7 +63,10 @@
 			}
 			entity.requestData.setupDate = dateUtils.nowToReverse();
 			entity.requestData.status = 'created';
-			entity.requestData.applicant = {schema: 'uri://registries/people#views/fullperson-km/view', registry: 'people', oid: event.user.id};
+			entity.requestData.applicant = {
+				schema: 'uri://registries/people#views/fullperson-km/view',
+				oid: event.user.id
+			};
 
 			if (event.user && event.user.officer && event.user.officer.club) {
 				entity.requestData.clubApplicant = {
@@ -118,7 +121,7 @@
 
 			// if (entity.requestData) {
 
-			entity.requestData.applicant = {schema: 'uri://registries/people#views/fullperson/view', registry: 'people', oid: event.user.id};
+			entity.requestData.applicant = {schema: 'uri://registries/people#views/fullperson/view', oid: event.user.id};
 			if (entity.requestData.assignedTo) {
 				userDao.get(entity.requestData.assignedTo.oid, function(err, solver) {
 						if (err) {

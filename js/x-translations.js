@@ -33,6 +33,7 @@
 			"menu.requests.new.transfer.lower.level":"Žiadosť o transfer",
 			"menu.requests.search.transfer.lower.level":"Hľadať žiadosť o transfer",
 			"menu.search.club.person.lower.level": "Hľadať člena klubu",
+			"menu.search.club.player.lower.level":"Hľadať hráča klubu",
 			"menu.requests.search.transferFromClub.lower.level": "Hľadať transfer z klubu",
 			"menu.logins.lower.level": "História prihlásení",
 
@@ -144,6 +145,14 @@
 			"schema.people.medic.validFrom":"Dátum platnosti",
 			"schema.people.medic.validTo":"Doba platnosti",
 			"schema.people.medic.modifiedOn":"Dátum aktualizácie",
+
+			"schema.people.scorer":"Zapisovateľ",
+			"schema.people.isScorer":"Je zapisovateľ",
+			"schema.people.scorer.scorerLicense":"Licencia",
+			"schema.people.scorer.stateOfScorer":"Stav zapisovateľa",
+			"schema.people.scorer.club":"Klubová príslušnosť",
+			"schema.people.scorer.dateOfRegistration":"Dátum registrácie",
+			"schema.people.scorer.validFrom":"Dátum platnosti",
 
 			"schema.people.statistic":"Štatistik",
 			"schema.people.isStatistic":"Je štatistik",
@@ -516,6 +525,7 @@
 		$translateProvider.translations('cz', {
 			"menu.roster.title":"Družstvá",
 			"menu.search.club.person.lower.level": "Hľadať člena klubu",
+			"menu.search.club.player.lower.level":"Hľadať hráča klubu",
 			"menu.requests.search.transferFromClub.lower.level": "Hľadať transfer z klubu",
 			"menu.logins.lower.level": "História prihlásení",
 			
@@ -618,6 +628,14 @@
 			"schema.people.officer.stateOfOfficer":"Stav funkcionára",
 			"schema.people.officer.dateOfExpiration":"Dátum platnosti preukazu",
 			"schema.people.officer.dateOfApplicationForId":"Dátum začiatku platnosti preukazu",
+
+			"schema.people.scorer":"Zapisovateľ",
+			"schema.people.isScorer":"Je zapisovateľ",
+			"schema.people.scorer.scorerLicense":"Licencia",
+			"schema.people.scorer.stateOfScorer":"Stav zapisovateľa",
+			"schema.people.scorer.club":"Klubová príslušnosť",
+			"schema.people.scorer.dateOfRegistration":"Dátum registrácie",
+			"schema.people.scorer.validFrom":"Dátum platnosti",
 
 			"schema.people.medic":"Zdravotník",
 			"schema.people.isMedic":"Je zdravotník",

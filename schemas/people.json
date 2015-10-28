@@ -336,53 +336,49 @@
 				}
 			}
 		},
-		"agent": {
-			"title": "Agent",
-			"transCode": "schema.people.agent",
+		"scorer": {
+			"title": "Zapisovateľ",
+			"transCode": "schema.people.scorer",
 			"type": "object",
 			"properties": {
-				"firstAssociation": {
-					"title": "Prvotný zväz",
-					"type": "object",
-					"objectLink2": {
-						"schema": "uri://registries/organizations#views/association/view",
-						"fields": {
-							"name": "association.associationName"
-						}
-					}
+				"isScorer": {
+					"extends":"uri://registries/commonenums#blocks/boolean",
+					"title": "Je zapisovateľ",
+					"transCode": "schema.people.isScorer"
 				},
-				"state": {
+				"scorerLicense": {
+					"title": "Licencia",
+					"transCode": "schema.people.scorer.scorerLicense",
+					"type": "string"
+				},
+				"stateOfScorer": {
 					"extends":"uri://registries/commonenums#blocks/active",
-					"title": "Stav"
+					"title": "Stav zdravotníka",
+					"transCode": "schema.people.scorer.stateOfScorer"
 				},
-				"association": {
-					"title": "Zväzová príslušnosť",
+				"club": {
+					"title": "Klubová príslušnosť",
+					"transCode": "schema.people.scorer.club",
 					"type": "object",
 					"objectLink2": {
-						"schema": "uri://registries/organizations#views/association/view",
+						"schema": "uri://registries/organizations#views/club/view",
 						"fields": {
-							"name": "association.associationName"
+							"name": "club.name"
 						}
 					}
 				},
-				"expirationOfLicense": {
+				"dateOfRegistration": {
 					"extends":"uri://registries/commontypes#blocks/date",
-					"title": "Platnosť licencie"
-					}
+					"title": "Dátum registrácie",
+					"transCode": "schema.people.scorer.dateOfRegistration"
 				},
-				"expirationOfInsurance": {
+				"validFrom": {
 					"extends":"uri://registries/commontypes#blocks/date",
-					"title": "Platnosť poistenia"
-				},
-				"dateOfExpiration": {
-					"extends":"uri://registries/commontypes#blocks/date",
-					"title": "Dátum platnosti preukazu"
-				},
-				"dateOfApplicationForId": {
-					"extends":"uri://registries/commontypes#blocks/date",
-					"title": "Dátum začiatku platnosti preukazu"
+					"title": "Dátum platnosti",
+					"transCode": "schema.people.scorer.validFrom"
 				}
-			},
+			}
+		},
 		"player": {
 			"title": "Hráč",
 			"transCode": "schema.people.player",
@@ -635,6 +631,9 @@
 				"statistic":{
 					"$ref":"uri://registries/people#blocks/statistic"
 				},
+				"scorer":{
+					"$ref":"uri://registries/people#blocks/scorer"
+				},
 				"photoInfo":{
 					"$ref":"uri://registries/people#blocks/photoInfo"
 				},
@@ -667,18 +666,33 @@
 					]
 				}
 			},
-			"properties":{
-				"player":{
-					"$ref":"uri://registries/people#blocks/player"
+			"properties": {
+				"photoInfo": {
+					"$ref": "uri://registries/people#blocks/photoInfo"
+				},
+				"player": {
+					"$ref": "uri://registries/people#blocks/player"
 				},
 				"officer":{
 					"$ref":"uri://registries/people#blocks/officer"
 				},
-				"photoInfo":{
-					"$ref":"uri://registries/people#blocks/photoInfo"
+				"coach":{
+					"$ref":"uri://registries/people#blocks/coach"
 				},
-				"otherInfo":{
-					"$ref":"uri://registries/people#blocks/otherInfo"
+				"medic":{
+					"$ref":"uri://registries/people#blocks/medic"
+				},
+				"statistic":{
+					"$ref":"uri://registries/people#blocks/statistic"
+				},
+				"scorer":{
+					"$ref":"uri://registries/people#blocks/scorer"
+				},
+				"otherInfo": {
+					"$ref": "uri://registries/people#blocks/otherInfo"
+				},
+				"idInfo":{
+					"$ref":"uri://registries/people#blocks/idInfo"
 				}
 			}
 		},
@@ -688,9 +702,9 @@
 			"transCode":"schema.people.coach",
 			"forcedCriteria": [
 				{
-				"f": "coach.isCoach",
-				"op": "eq",
-				"v": "TRUE"
+					"f": "coach.isCoach",
+					"op": "eq",
+					"v": "TRUE"
 				}
 			],
 			"properties":{
@@ -711,9 +725,9 @@
 			"transCode":"schema.people.referee",
 			"forcedCriteria": [
 				{
-				"f": "referee.isReferee",
-				"op": "eq",
-				"v": "TRUE"
+					"f": "referee.isReferee",
+					"op": "eq",
+					"v": "TRUE"
 				}
 			],
 			"properties":{
@@ -734,9 +748,9 @@
 			"transCode":"schema.people.officer",
 			"forcedCriteria": [
 				{
-				"f": "officer.isOfficer",
-				"op": "eq",
-				"v": "TRUE"
+					"f": "officer.isOfficer",
+					"op": "eq",
+					"v": "TRUE"
 				}
 			],
 			"properties":{
@@ -757,9 +771,9 @@
 			"transCode":"schema.people.statistic",
 			"forcedCriteria": [
 				{
-				"f": "statistic.isStatistic",
-				"op": "eq",
-				"v": "TRUE"
+					"f": "statistic.isStatistic",
+					"op": "eq",
+					"v": "TRUE"
 				}
 			],
 			"properties":{
@@ -780,9 +794,9 @@
 			"transCode":"schema.people.medic",
 			"forcedCriteria": [
 				{
-				"f": "medic.isMedic",
-				"op": "eq",
-				"v": "TRUE"
+					"f": "medic.isMedic",
+					"op": "eq",
+					"v": "TRUE"
 				}
 			],
 			"properties":{
@@ -803,9 +817,9 @@
 			"transCode":"schema.people.player",
 			"forcedCriteria": [
 				{
-				"f": "player.isPlayer",
-				"op": "eq",
-				"v": "TRUE"
+					"f": "player.isPlayer",
+					"op": "eq",
+					"v": "TRUE"
 				}
 			],
 			"properties":{
@@ -848,15 +862,18 @@
 					"v": "TRUE"
 				}
 			],
-			"properties": {
-				"photoInfo": {
-					"$ref": "uri://registries/people#blocks/photoInfo"
+			"properties":{
+				"player":{
+					"$ref":"uri://registries/people#blocks/player"
 				},
-				"player": {
-					"$ref": "uri://registries/people#blocks/player"
+				"photoInfo":{
+					"$ref":"uri://registries/people#blocks/photoInfo"
 				},
-				"otherInfo": {
-					"$ref": "uri://registries/people#blocks/otherInfo"
+				"otherInfo":{
+					"$ref":"uri://registries/people#blocks/otherInfo"
+				},
+				"idInfo":{
+					"$ref":"uri://registries/people#blocks/idInfo"
 				}
 			}
 		},
@@ -956,27 +973,18 @@
 				]
 			}
 		},
-		"fullperson-km":{
-			"new":{
-				"extends":"uri://registries/people#views/fullperson-km/view",
-				"saveBySchema": "uri://registries/people#views/fullperson-km/view",
-				"properties":{
-					"baseData": {
-						"properties": {
-							"registrationID": null
-						}
-					}
-				}
+		"fullperson-km": {
+			"new": {
+				"extends": "uri://registries/people#models/fullperson-km",
+				"title": "Nový hráč"
 			},
-			"view":{
-				"extends":"uri://registries/people#models/fullperson-km",
+			"view": {
+				"extends": "uri://registries/people#models/fullperson-km",
+				"title": "Hráč",
 				"properties":{
 					"baseData": {
 						"properties": {
 							"registrationID": {
-								"readOnly": true
-							},
-							"id": {
 								"readOnly": true
 							},
 							"name": {
@@ -985,65 +993,56 @@
 							"surName": {
 								"readOnly": true
 							},
-							"birthDate": {
-								"readOnly": true
-							},
 							"gender": {
 								"readOnly": true
 							},
 							"stateofPerson": {
 								"readOnly": true
-							}
-						}
-					},
-					"photoInfo": {
-						"properties": {
-							"photo": {
-								"readOnly": true
-							}
+							},
+							"birthDate": null,
+							"id": null,
+							"bornName": null,
+							"titleBefore": null,
+							"titleAfter": null,
+							"stateofPerson": null,
+							"nationality": null
 						}
 					},
 					"player": {
 						"properties": {
-							"isPlayer": {
+							"isPlayer":{
 								"readOnly": true
 							},
 							"playerLicense":{
 								"readOnly": true
 							},
-							"clubOfFirstRegistration": {
+							"clubOfFirstRegistration":{
 								"readOnly": true
 							},
-							"club": {
+							"club":{
 								"readOnly": true
 							},
-							"stateOfPlayer": {
+							"hostingStartDate":{
 								"readOnly": true
 							},
-							"expirationOfProffesionalContract": {
+							"hostingEndDate":{
 								"readOnly": true
 							},
-							"registrationCanceled": {
+							"validFrom":{
 								"readOnly": true
 							},
-							"dateOfRegistration": {
+							"validTo":{
 								"readOnly": true
 							},
-							"hostingStartDate": {
-								"readOnly": true
-							},
-							"hostingEndDate": {
-								"readOnly": true
-							},
-							"validFrom": {
-								"readOnly": true
-							},
-							"validTo": {
-								"readOnly": true
-							},
-							"modifiedOn": {
-								"readOnly": true
-							}
+							"expirationOfProffesionalContract": null,
+							"modifiedOn": null,
+							"expirationOfAgentContract": null,
+							"expiration": null,
+							"registrationCanceled": null,
+							"dateOfRegistration": null,
+							"stateOfPlayer": null,
+							"dateOfExpiration": null,
+							"dateOfApplicationForId": null
 						}
 					},
 					"officer": {
@@ -1077,15 +1076,127 @@
 							}
 						}
 					},
-					"otherInfo":{
+					"statistic": {
 						"properties": {
-							"note":null
+							"isStatistic": {
+								"readOnly": true
+							},
+							"statisticLicense": {
+								"readOnly": true
+							},
+							"stateOfStatistic": {
+								"readOnly": true
+							},
+							"dateOfRegistration": {
+								"readOnly": true
+							},
+							"validFrom": {
+								"readOnly": true
+							},
+							"validTo": {
+								"readOnly": true
+							}
 						}
-					}
+					},
+					"medic": {
+						"properties": {
+							"isMedic": {
+								"readOnly": true
+							},
+							"medicLicense": {
+								"readOnly": true
+							},
+							"stateOfMedic": {
+								"readOnly": true
+							},
+							"dateOfRegistration": {
+								"readOnly": true
+							},
+							"validFrom": {
+								"readOnly": true
+							},
+							"validTo": {
+								"readOnly": true
+							}
+						}
+					},
+					"coach": {
+						"properties": {
+							"isCoach": {
+								"readOnly": true
+							},
+							"coachLicense": {
+								"readOnly": true
+							},
+							"stateOfCoach": {
+								"readOnly": true
+							},
+							"dateOfRegistration": {
+								"readOnly": true
+							},
+							"proffesionalCompetence": {
+								"readOnly": true
+							},
+							"firstYear": {
+								"readOnly": true
+							},
+							"coachLicenseLevel": {
+								"readOnly": true
+							},
+							"licenseSeminar": {
+								"readOnly": true
+							},
+							"coachLicenseType":{
+								"readOnly": true
+							},
+							"feeDate":null
+						}
+					},
+					"scorer":{
+						"properties": {
+							"isScorer": {
+								"readOnly": true
+							},
+							"scorerLicense": {
+								"readOnly": true
+							},
+							"stateOfScorer": {
+								"readOnly": true
+							},
+							"dateOfRegistration": {
+								"readOnly": true
+							},
+							"validFrom": {
+								"readOnly": true
+							},
+							"club": {
+								"readOnly": true
+							}
+						}
+					},
+					"idInfo": {
+						"properties": {
+							"currentId": {
+								"readOnly": true
+							},
+							"dateOfExpiration": {
+								"readOnly": true
+							},
+							"dateOfApplicationForId": {
+								"readOnly": true
+							},
+							"orderPrint": {
+								"readOnly": true
+							}
+						}
+					},
+					"contactInfo": null,
+					"photoInfo": null,
+					"otherInfo": null
 				}
 			},
-			"search":{
-				"extends":"uri://registries/people#models/fullperson-km",
+			"search": {
+				"extends": "uri://registries/people#models/fullperson-km",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
@@ -1095,9 +1206,7 @@
 						}
 					}
 				],
-				"properties": {
-					"photoInfo":null
-				},
+				"title": "Hráč",
 				"listFields": [
 					{
 						"field": "player.playerLicense",
@@ -1395,18 +1504,27 @@
 				]
 			}
 		},
-		"player-km": {
-			"new": {
-				"extends": "uri://registries/people#models/player-km",
-				"title": "Nový hráč"
+		"player-km":{
+			"new":{
+				"extends":"uri://registries/people#views/player-km/view",
+				"saveBySchema": "uri://registries/people#views/player-km/view",
+				"properties":{
+					"baseData": {
+						"properties": {
+							"registrationID": null
+						}
+					}
+				}
 			},
-			"view": {
-				"extends": "uri://registries/people#models/player-km",
-				"title": "Hráč",
+			"view":{
+				"extends":"uri://registries/people#models/player-km",
 				"properties":{
 					"baseData": {
 						"properties": {
 							"registrationID": {
+								"readOnly": true
+							},
+							"id": {
 								"readOnly": true
 							},
 							"name": {
@@ -1415,65 +1533,88 @@
 							"surName": {
 								"readOnly": true
 							},
+							"birthDate": {
+								"readOnly": true
+							},
 							"gender": {
 								"readOnly": true
 							},
 							"stateofPerson": {
 								"readOnly": true
-							},
-							"birthDate": null,
-							"id": null,
-							"bornName": null,
-							"titleBefore": null,
-							"titleAfter": null,
-							"stateofPerson": null,
-							"nationality": null
+							}
+						}
+					},
+					"photoInfo": {
+						"properties": {
+							"photo": {
+								"readOnly": true
+							}
 						}
 					},
 					"player": {
 						"properties": {
-							"isPlayer":{
+							"isPlayer": {
 								"readOnly": true
 							},
 							"playerLicense":{
 								"readOnly": true
 							},
-							"clubOfFirstRegistration":{
+							"clubOfFirstRegistration": {
 								"readOnly": true
 							},
-							"club":{
+							"club": {
 								"readOnly": true
 							},
-							"hostingStartDate":{
+							"stateOfPlayer": {
 								"readOnly": true
 							},
-							"hostingEndDate":{
+							"expirationOfProffesionalContract": {
 								"readOnly": true
 							},
-							"validFrom":{
+							"registrationCanceled": {
 								"readOnly": true
 							},
-							"validTo":{
+							"dateOfRegistration": {
 								"readOnly": true
 							},
-							"expirationOfProffesionalContract": null,
-							"modifiedOn": null,
-							"expirationOfAgentContract": null,
-							"expiration": null,
-							"registrationCanceled": null,
-							"dateOfRegistration": null,
-							"stateOfPlayer": null,
-							"dateOfExpiration": null,
-							"dateOfApplicationForId": null
+							"hostingStartDate": {
+								"readOnly": true
+							},
+							"hostingEndDate": {
+								"readOnly": true
+							},
+							"validFrom": {
+								"readOnly": true
+							},
+							"validTo": {
+								"readOnly": true
+							},
+							"modifiedOn": {
+								"readOnly": true
+							}
 						}
 					},
-					"contactInfo": null,
-					"photoInfo": null,
-					"otherInfo": null
+					"idInfo": {
+						"properties": {
+							"currentId": {
+								"readOnly": true
+							},
+							"dateOfExpiration": {
+								"readOnly": true
+							},
+							"dateOfApplicationForId": {
+								"readOnly": true
+							},
+							"orderPrint": {
+								"readOnly": true
+							}
+						}
+					},
+					"otherInfo":null
 				}
 			},
-			"search": {
-				"extends": "uri://registries/people#models/player-km",
+			"search":{
+				"extends":"uri://registries/people#models/player-km",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
@@ -1483,7 +1624,9 @@
 						}
 					}
 				],
-				"title": "Hráč",
+				"properties": {
+					"photoInfo":null
+				},
 				"listFields": [
 					{
 						"field": "player.playerLicense",
