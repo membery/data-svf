@@ -32,7 +32,10 @@
 				"baseData": {
 					"properties": {
 						"id": {
-							"unique": null
+							"unique": {
+								"schema": "uri://registries/people#views/fullperson-km",
+								"field": "baseData.id"
+							}
 						},
 						"registrationID": null
 					}
