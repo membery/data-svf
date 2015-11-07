@@ -40,9 +40,9 @@
 							"objectLink2": {
 								"schema": "uri://registries/people#views/fullperson-km/view",
 								"fields": {
-									"playerLicense": "player.playerLicense",
 									"surName": "baseData.surName",
-									"name": "baseData.name"
+									"name": "baseData.name",
+									"playerLicense": "player.playerLicense"
 								}
 							}
 						},
