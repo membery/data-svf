@@ -671,10 +671,29 @@
 					"$ref": "uri://registries/people#blocks/photoInfo"
 				},
 				"player": {
-					"$ref": "uri://registries/people#blocks/player"
+					"extends": "uri://registries/people#blocks/player",
+					"properties": {
+						"club": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							}
+						},
+						"clubOfFirstRegistration": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							}
+						}
+					}
 				},
 				"officer":{
-					"$ref":"uri://registries/people#blocks/officer"
+					"extends":"uri://registries/people#blocks/officer",
+					"properties": {
+						"club": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							}
+						}
+					}
 				},
 				"coach":{
 					"$ref":"uri://registries/people#blocks/coach"
@@ -686,7 +705,14 @@
 					"$ref":"uri://registries/people#blocks/statistic"
 				},
 				"scorer":{
-					"$ref":"uri://registries/people#blocks/scorer"
+					"extends":"uri://registries/people#blocks/scorer",
+					"properties": {
+						"club": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							}
+						}
+					}
 				},
 				"otherInfo": {
 					"$ref": "uri://registries/people#blocks/otherInfo"
@@ -863,8 +889,20 @@
 				}
 			],
 			"properties":{
-				"player":{
-					"$ref":"uri://registries/people#blocks/player"
+				"player": {
+					"extends": "uri://registries/people#blocks/player",
+					"properties": {
+						"club": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							}
+						},
+						"clubOfFirstRegistration": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view"
+							}
+						}
+					}
 				},
 				"photoInfo":{
 					"$ref":"uri://registries/people#blocks/photoInfo"
@@ -976,11 +1014,11 @@
 		"fullperson-km": {
 			"new": {
 				"extends": "uri://registries/people#models/fullperson-km",
-				"title": "Nový hráč"
+				"title": "Osoba"
 			},
 			"view": {
 				"extends": "uri://registries/people#models/fullperson-km",
-				"title": "Hráč",
+				"title": "Osoba",
 				"properties":{
 					"baseData": {
 						"properties": {
@@ -1017,9 +1055,15 @@
 								"readOnly": true
 							},
 							"clubOfFirstRegistration":{
+								"objectLink2": {
+									"schema":"uri://registries/organizations#views/club-km/view"
+								},
 								"readOnly": true
 							},
-							"club":{
+							"club": {
+								"objectLink2": {
+									"schema":"uri://registries/organizations#views/club-km/view"
+								},
 								"readOnly": true
 							},
 							"hostingStartDate":{
@@ -1054,6 +1098,9 @@
 								"readOnly": true
 							},
 							"club": {
+								"objectLink2": {
+									"schema":"uri://registries/organizations#views/club-km/view"
+								},
 								"readOnly": true
 							},
 							"association": {
@@ -1206,12 +1253,13 @@
 						}
 					}
 				],
-				"title": "Hráč",
+				"title": "Osoba",
 				"listFields": [
 					{
-						"field": "player.playerLicense",
-						"title": "Číslo HL",
-						"transCode":"schema.people.player.playerLicense"
+						
+						"field": "baseData.registrationID",
+						"title": "Registracna cislo",
+						"transCode":"schema.people.registrationID"
 					},
 					{
 						"field": "baseData.surName",
@@ -1224,14 +1272,14 @@
 						"transCode":"schema.people.name"
 					},
 					{
-						"field": "baseData.birthDate",
-						"title": "Dátum narodenia",
-						"transCode":"schema.people.birthDate"
-					},
-					{
 						"field": "contactInfo.city",
 						"title": "Mesto",
 						"transCode":"schema.people.city"
+					},
+					{
+						"field": "idInfo.currentId",
+						"title": "Čislo preukazu",
+						"transCode": "schema.people.currentId"
 					}
 				]
 			}
