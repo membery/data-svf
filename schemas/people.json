@@ -886,6 +886,12 @@
 					"f": "player.isPlayer",
 					"op": "eq",
 					"v": "TRUE"
+				},
+				{
+					"f": "player.club"
+				},
+				{
+					"f": "player.clubOfFirstRegistration"
 				}
 			],
 			"properties":{
