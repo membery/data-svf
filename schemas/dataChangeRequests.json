@@ -233,6 +233,14 @@
 		"dataChangeSolver": {
 			"view": {
 				"extends": "uri://registries/dataChangeRequests#models/dataChange-km",
+				"actions": [
+					{
+						"title": "Aplikovať zmeny",
+						"classes": "btn btn-primary",
+						"iconClasses": "fa fa-check-circle-o",
+						"func": "svfHack"
+					}
+				],
 				"security": {
 					"create": {
 						"static": [
@@ -251,6 +259,15 @@
 					}
 				},
 				"properties": {
+					"peopleObjLink": {
+						"properties": {
+							"people": {
+								"objectLink2": {
+									"schema": "uri://registries/people#views/fullperson/view"
+								}
+							}
+						}
+					},
 					"requestData": {
 						"properties":{
 							"status": {
@@ -296,7 +313,7 @@
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2FdataChangeRequests~23views~2FdataChangeSolver/{{model.id}}"
+							"path": "/2/registry/view/uri~3A~2F~2Fregistries~2FdataChangeRequests~23views~2FdataChangeSolver~2Fview/{{model.id}}"
 						}
 					}
 				]
