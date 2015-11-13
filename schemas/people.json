@@ -114,9 +114,25 @@
 					"transCode": "schema.people.referee.dateOfRegistration"
 				},
 				"refereeLicense": {
-					"title": "Rozhodcovská licencia",
+					"title": "Číslo licencie",
 					"transCode": "schema.people.referee.refereeLicense",
 					"type": "string"
+				},
+				"refereeLicenseType": {
+					"title": "Typ licencie",
+					"transCode": "schema.people.referee.refereeLicenseType",
+					"type": "string",
+					"enum": [
+						"A",
+						"B",
+						"C",
+						"D",
+						"AM"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
 				}
 			}
 		},

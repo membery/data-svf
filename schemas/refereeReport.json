@@ -83,6 +83,25 @@
 						"schema":"uri://registries/rosters#views/rosters/view",
 						"fields":{
 							"name": "baseData.prName"
+						},
+						"calculatedCriteria": {
+							"func": "criteriaList",
+							"watch": ["baseData.competition.oid"],
+							"args": [{
+								"func": "criterion",
+								"args": {
+									"f": "baseData.competition.oid",
+									"op": "eq",
+									"v": {
+										"func": "get",
+										"args": {
+											"modelPath": "baseData.competition.oid",
+											"default": null
+										}
+									},
+									"nullIfEmpty": true
+								}
+							}]
 						}
 					}
 				},
@@ -95,6 +114,25 @@
 						"schema":"uri://registries/rosters#views/rosters/view",
 						"fields":{
 							"name": "baseData.prName"
+						},
+						"calculatedCriteria": {
+							"func": "criteriaList",
+							"watch": ["baseData.competition.oid"],
+							"args": [{
+								"func": "criterion",
+								"args": {
+									"f": "baseData.competition.oid",
+									"op": "eq",
+									"v": {
+										"func": "get",
+										"args": {
+											"modelPath": "baseData.competition.oid",
+											"default": null
+										}
+									},
+									"nullIfEmpty": true
+								}
+							}]
 						}
 					}
 				},
@@ -189,6 +227,7 @@
 					"required": true,
 					"enum": [
 						"Otvorený",
+						"Zobrazený",
 						"Schválený",
 						"Zatvorený"
 					],
