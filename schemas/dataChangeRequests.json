@@ -43,6 +43,25 @@
 									"surName": "baseData.surName",
 									"name": "baseData.name",
 									"playerLicense": "player.playerLicense"
+								},
+								"calculatedCriteria": {
+									"func": "criteriaList",
+									"watch": ["peopleObjLink.people.oid"],
+									"args": [{
+										"func": "criterion",
+										"args": {
+											"f": "player.club.oid",
+											"op": "eq",
+											"v": {
+												"func": "get",
+												"args": {
+													"userPath": "officer.club.oid",
+													"default": null
+												}
+											},
+											"nullIfEmpty": true
+										}
+									}]
 								}
 							}
 						},
