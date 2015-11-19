@@ -48,6 +48,18 @@
 					"title": "Úroveň súťaže",
 					"transCode": "schema.competition.competitionLevel",
 					"required": true
+				},
+				"competitionGroup": {
+					"type": "object",
+					"title": "Skupina súťaží",
+					"objectLink2": {
+						"schema": "uri://registries/competitionGroups#view",
+						"fields": {
+							"code": "baseData.code",
+							"name": "baseData.name"
+						}
+					},
+					"required": true
 				}
 			}
 		}

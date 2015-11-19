@@ -57,6 +57,8 @@
 			<li ng-show="hasPermissions(['Season - read'])"><a href="#/registry/search/{{'uri://registries/seasons#views/seasons/search'|xpsuiuriescape}}"><span>{{'menu.search.season.lower.level' | translate}}</span></a></li>
 			<li ng-show="hasPermissions(['AgeCategory - write'])"><a href="#/registry/new/{{'uri://registries/ageCategory#views/ageCategory'|xpsuiuriescape}}"><span>{{'menu.new.ageCategory.lower.level.she' | translate}}</span></a></li>
 			<li ng-show="hasPermissions(['AgeCategory - read'])"><a href="#/registry/search/{{'uri://registries/ageCategory#views/ageCategory/search'|xpsuiuriescape}}"><span>{{'menu.search.ageCategory.lower.level' | translate}}</span></a></li>
+			<li ng-show="hasPermissions(['Competition - write'])"><a href="#/registry/new/{{'uri://registries/competitionGroups#'|xpsuiuriescape}}"><span>Nová skupina súťaží</span></a></li>
+			<li ng-show="hasPermissions(['Competition - write'])"><a href="#/registry/search/{{'uri://registries/competitionGroups#search'|xpsuiuriescape}}"><span>Hľadať skupinu súťaží</span></a></li>
 		</ul>
 	</li>
 	<li ng-show="hasPermissions(['Registry Requests Solver'])"><a href="#" class="x-submenu-toggle"><i class="fa fa-tasks fa-2x"></i><span>{{'menu.requests.solver.title' | translate}}</span></a>

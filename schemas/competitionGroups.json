@@ -1,0 +1,76 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/competitionGroups#",
+	"new": {
+		"table": "competitionGroups",
+		"title": "Skupiny súťaží",
+		"type": "object",
+		"properties": {
+			"baseData": {
+				"type": "object",
+				"title": "Základné údaje",
+				"properties": {
+					"code": {
+						"title": "Kód",
+						"type": "string",
+						"required": true
+					},
+					"name": {
+						"title": "Názov skupiny",
+						"type": "string",
+						"required": true
+					},
+					"priority": {
+						"title": "Priorita",
+						"type": "number",
+						"required": true
+					},
+					"parentGroup": {
+						"type": "object",
+						"title": "Nadradená skupina",
+						"objectLink2": {
+							"schema": "uri://registries/competitionGroups#view",
+							"fields": {
+								"code": "baseData.code",
+								"name": "baseData.name"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"view": {
+		"extends": "uri://registries/competitionGroups#new"
+	},
+	"search": {
+		"extends": "uri://registries/competitionGroups#new",
+		"clientActions": [
+			{
+				"__DIRECTIVE__": "schema-redirect-link",
+				"title": "Zobraziť",
+				"params": {
+					"path": "/registry/view/uri~3A~2F~2Fregistries~2FcompetitionGroups~23/{{model.id}}"
+				}
+			}
+		],
+		"listFields": [
+			{
+				"field": "baseData.name",
+				"title": "Názov skupiny"
+			},
+			{
+				"field": "baseData.code",
+				"title": "Kód"
+			},
+			{
+				"field": "baseData.priority",
+				"title": "Priorita"
+			},
+			{
+				"field": "baseData.parentGroup",
+				"title": "Nadradená skupina"
+			}
+		]
+	}
+}

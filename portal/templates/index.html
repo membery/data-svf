@@ -17,11 +17,20 @@
 		<h1><img src="/portal/img/logo.jpg">VolleyNET</h1>
 	</div>
 	<div class="portal-content">
+		<div class="portal-block portal-block-comp-selector">
+			<div class="portal-block-header">Výber súťaže</div>
+			<div class="portal-block-content">
+				<div class="portal-results">
+					<div class="portal-comp-selector-div"><select id="comp-select-1" class="portal-comp-selector"></select></div>
+					<div class="portal-comp-selector-data">
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="portal-block portal-block-matches">
-			<div class="portal-block-header">Najbližšie zápasy</div>
+			<div class="portal-block-header">Najbližšie stretnutia</div>
 			<div class="portal-block-content">
 				<div class="portal-matches">
-					<div class="portal-matches-selector-div"><select class="portal-matches-selector"></select></div>
 					<div class="portal-matches-row">
 					</div><!-- portal matcher row -->
 				</div><!-- portal-matches -->
@@ -31,17 +40,15 @@
 			<div class="portal-block-header">Tabuľky</div>
 			<div class="portal-block-content">
 				<div class="portal-results">
-					<div class="portal-results-selector-div"><select class="portal-results-selector"></select></div>
 					<div class="portal-results-data">
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="portal-block portal-block-schedule">
-			<div class="portal-block-header">Rozpis zápasov</div>
+			<div class="portal-block-header">Rozpis stretnutí</div>
 			<div class="portal-block-content">
 				<div class="portal-schedule">
-					<div class="portal-schedule-selector-div"><select class="portal-schedule-selector"></select></div>
 					<div class="portal-schedule-data">
 					</div>
 				</div>
@@ -277,5 +284,261 @@ $(function() {
 	});
 });
 
+$(function() {
+	function loadResults(cid) {
+		return $.get('/competition/results/'+cid, function(data) {
+			data.sort(function(a,b) {
+				if (b.wins - a.wins === 0) {
+					if (a.points - b.points === 0) {
+						return (b.setsWon / b.setsLost) - (a.setsWon / a.setsLost);
+					} else {
+						return a.points - b.points;
+					}
+
+				} else {
+					return b.wins - a.wins;
+				}
+			});
+
+			var table = $('.portal-results-data');
+
+			table.empty();
+
+			var e = $('<div class="portal-results-row"><div class="portal-results-num"> </div>'
+				+ '<div class="portal-results-club">Klub</div>'
+				+ '<div class="portal-results-matches">Zápasy</div>'
+				+ '<div class="portal-results-matches">Výhry</div>'
+				+ '<div class="portal-results-matches">Prehry</div>'
+				+ '<div class="portal-results-points">Body</div></div>');
+
+			table.append(e);
+
+			var counter = 0;
+			for (var i in data) {
+
+				e = $('<div class="portal-results-row"><div class="portal-results-num">' + (++counter) + '</div>'
+					+ '<div class="portal-results-club">' + data[i].name + '</div>'
+					+ '<div class="portal-results-matches">' + data[i].matches + '</div>'
+					+ '<div class="portal-results-matches">' + data[i].wins + '</div>'
+					+ '<div class="portal-results-matches">' + (data[i].matches - data[i].wins) + '</div>'
+					+ '<div class="portal-results-points">' + data[i].points + '</div></div>');
+
+				table.append(e);
+			}
+		});
+	}
+
+	function loadSchedule(cid) {
+		return $.get('/competition/matches-all/'+cid, function(data) {
+			function formatDate(d) {
+				return d.substr(6,2) + '.' +d.substr(4,2) + '.' + d.substr(0,4);
+			}
+
+			var tblContainer = $('.portal-schedule-data');
+
+			tblContainer.empty();
+
+			var sRounds = Object.keys(data).sort(function(a,b) {
+				return parseInt(a)-parseInt(b);
+			});
+			var lastDate = null;
+			var position = 0;
+			for (var r in sRounds) {
+				var round = data[sRounds[r]];
+
+				tblContainer.append('<div class="portal-schedule-round">'+sRounds[r]+'</div>');
+				round.sort(function(a, b) {
+					return a.matchDate.localeCompare(b.matchDate);
+				});
+				for (var m in round) {
+					var match = round[m];
+
+					if (match.finished) {
+						tblContainer.append(
+							'<div class="portal-schedule-row">' +
+								'<div class="portal-schedule-dt">' +
+									'<div class="portal-schedule-date">' + formatDate(match.matchDate) + '</div>' +
+									'<div class="portal-schedule-time">' + (match.matchTime || '-') + '</div>' +
+								'</div>' +
+								'<div class="portal-schedule-match">' +
+								'<div class="portal-schedule-home">' + match.homeName + '</div>' +
+								'<div class="portal-schedule-score"><div class="portal-schedule-score-home">'+(match.fullTimeScoreHome || '_')+'</div>' +
+									'<div class="portal-schedule-score-hyphen">:</div>' +
+									'<div class="portal-schedule-score-away">'+(match.fullTimeScoreAway || '_')+'</div>'+
+									'<div class="portal-schedule-score-balls">'+(match.additionalScore || '')+'</div></div>' +
+									'<div class="portal-schedule-away">'+match.guestName+'</div></div></div>');
+					} else {
+						tblContainer.append(
+							'<div class="portal-schedule-row">' +
+								'<div class="portal-schedule-dt">' +
+									'<div class="portal-schedule-date">' + formatDate(match.matchDate) + '</div>' +
+									'<div class="portal-schedule-time">' + (match.matchTime || '-') + '</div>' +
+								'</div>' +
+								'<div class="portal-schedule-match">' +
+								'<div class="portal-schedule-home">' + match.homeName + '</div>' +
+								'<div class="portal-schedule-score"><div class="portal-schedule-score-home">'+(match.fullTimeScoreHome || '_')+'</div>' +
+									'<div class="portal-schedule-score-hyphen">:</div>' +
+									'<div class="portal-schedule-score-away">'+(match.fullTimeScoreAway || '_')+'</div>'+
+									'<div class="portal-schedule-score-balls">'+(match.additionalScore || '')+'</div></div>' +
+									'<div class="portal-schedule-away">'+match.guestName+'</div></div></div>');
+					}
+				}
+			}
+		});
+	}
+
+	function loadMatches(cid) {
+		return $.get('/competition/matches/'+cid, function(data) {
+			function formatDate(d) {
+				return d.substr(6,2) + '.' +d.substr(4,2) + '.' + d.substr(0,4);
+			}
+
+			var tblContainer = $('.portal-matches-row');
+
+			tblContainer.empty();
+
+			var lastDate = null;
+			var position = 0;
+			for (var i in data) {
+				var currDate = formatDate(data[i].matchDate);
+				if (lastDate !== currDate) {
+					var table = $('<div class="portal-matches-block"></div>');
+					tblContainer.append(table);
+					table.append('<div class="portal-matches-title">'+currDate+'</td></tr>');
+					lastDate = currDate;
+					position++;
+				}
+				position++;
+
+				var fragment;
+
+				if (!data[i].finished) {
+					fragment = '<div class="portal-match">' +
+							'<div class="portal-match-home">' + data[i].homeName + '</div>' +
+							'<div class="portal-match-notplayed">' +
+								'<div class="portal-match-notplayed-time">' + (data[i].matchTime || '-') + '</div>' +
+							'</div>' +
+							'<div class="portal-match-guest">' + data[i].guestName + '</div>' +
+						'</div>';
+				} else {
+					fragment =
+						'<div class="portal-match">' +
+							'<div class="portal-match-home">' + data[i].homeName + '</div>' +
+							'<div class="portal-match-score-block">' +
+								'<div class="portal-match-score">' +
+									'<div class="portal-match-score-home">' + (data[i].fullTimeScoreHome || '0') + '</div>' +
+									'<div class="portal-match-score-hyphen">:</div>' +
+									'<div class="portal-match-score-away">' + (data[i].fullTimeScoreAway || '0') + '</div>' +
+								'</div>' +
+								'<div class="portal-match-score-balls">' + (data[i].additionalScore || '') + '</div>' +
+							'</div>' +
+							'<div class="portal-match-guest">' + data[i].guestName + '</div>' +
+						'</div>';
+				}
+
+				var e = $(fragment);
+
+				table.append(e);
+			}
+		});
+	}
+
+	function doCompetitionSelect(e) {
+		$('.portal-comp-selector-div').find('select').prop('disabled', true);
+		$('.portal-comp-selector-data').find('select').prop('disabled', true);
+		$(this).siblings().removeClass('selected');
+		$(this).addClass('selected');
+		$.when(
+		loadResults(e.data.id),
+		loadMatches(e.data.id),
+		loadSchedule(e.data.id))
+		.then(
+			function() {
+				$('.portal-comp-selector-div').find('select').prop('disabled', false);
+				$('.portal-comp-selector-data').find('select').prop('disabled', false);
+			}
+		);
+	}
+
+	$.get('/competitionGroups/list', function(data) {
+		var i;
+		var root = [];
+
+		for (i = 0; i < data.length; i++) {
+			if (data[i].parentGroup === null) {
+				root.push(data[i]);
+			}
+		}
+
+		// find root nodes
+		root.sort(function(a,b) {
+			if (a.priority === b.priority) {
+				return a.name.localeCompare(b.name);
+			} else {
+				return a.priority - b.priority;
+			}
+		});
+
+		// fill root nodes
+
+		for (i = 0; i < root.length; i++) {
+			$('#comp-select-1').append('<option value="'+root[i].id+'">'+ root[i].name + '</option>');
+		}
+
+		function doCompSelectChange(e) {
+			// remove all subsequent selects
+			$(this).nextAll('select').remove();
+			$('.portal-comp-selector-data').empty();
+
+			var subNodes = [];
+
+			for (i = 0; i < data.length; i++) {
+				if (data[i].parentGroup === $(this).val()) {
+					subNodes.push(data[i]);
+				}
+			}
+
+			subNodes.sort(function(a,b) {
+				if (a.priority === b.priority) {
+					return a.name.localeCompare(b.name);
+				} else {
+					return a.priority - b.priority;
+				}
+			});
+			
+			if (subNodes.length > 0) {
+				var el = $('<select class="portal-comp-selector"></select>');
+
+				$('.portal-comp-selector-div').append(el);
+
+				for (i = 0; i < subNodes.length; i++) {
+					$(el).append('<option value="'+subNodes[i].id+'">'+ subNodes[i].name + '</option>');
+				}
+			} else {
+				$('.portal-comp-selector-div').find('select').prop('disabled', true);
+				$('.portal-comp-selector-data').find('select').prop('disabled', true);
+				$.get('/competition/list?gid='+$(this).val(), function(data) {
+
+					for (i = 0; i < data.length; i++) {
+						var link = $('<div>'+data[i].name+'</div>');
+						$(link).on('click', {id: data[i].id}, doCompetitionSelect);
+						$('.portal-comp-selector-data').append($(link));
+
+						if (i === 0) {
+							$(link).trigger('click');
+						}
+					}
+				});
+			}
+
+			$(el).on('change', 2, doCompSelectChange);
+			$(el).trigger('change');
+
+		}
+
+		$('#comp-select-1').on('change', 1, doCompSelectChange);
+		$('#comp-select-1').trigger('change');
+	});
+});
 </script>
 </html>
