@@ -190,7 +190,7 @@
 					"title": "Nadradený zväz",
 					"transCode": "schema.org.assoc.higherAssociation",
 					"objectLink2": {
-						"schema": "uri://registries/organizations#views/association",
+						"schema": "uri://registries/organizations#views/association/view",
 						"fields": {
 							"name": "association.associationName"
 						}
