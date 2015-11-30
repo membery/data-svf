@@ -52,6 +52,7 @@
 				"competitionGroup": {
 					"type": "object",
 					"title": "Skupina súťaží",
+					"transCode": "schema.competition.competitionGroup",
 					"objectLink2": {
 						"schema": "uri://registries/competitionGroups#view",
 						"fields": {
@@ -121,6 +122,21 @@
 						"field": "baseData.name",
 						"title": "Názov súťaže",
 						"transCode": "schema.competition.name"
+					},
+					{
+						"field": "baseData.season",
+						"title": "Sezóna",
+						"transCode": "schema.competition.season"
+					},
+					{
+						"field": "baseData.ageCategory",
+						"title": "Veková kategória",
+						"transCode": "schema.competition.ageCategory"
+					},
+					{
+						"field": "baseData.competitionGroup",
+						"title": "Skupina súťaže",
+						"transCode": "schema.competition.competitionGroup"
 					}
 				]
 			}

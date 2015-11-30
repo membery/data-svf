@@ -136,11 +136,7 @@
 				"officer": {
 					"extends": "uri://registries/people#blocks/officer",
 					"properties": {
-						"club": {
-							"objectLink2": {
-								"schema":"uri://registries/organizations#views/club-km/view"
-							}
-						}
+						"club": null
 					}
 				},
 				"coach": {
@@ -157,7 +153,10 @@
 					"$ref": "uri://registries/people#blocks/statistic"
 				},
 				"scorer": {
-					"$ref": "uri://registries/people#blocks/scorer"
+					"extends": "uri://registries/people#blocks/scorer",
+					"properties": {
+						"club": null
+					}
 				},
 				"photoInfo": {
 					"$ref": "uri://registries/people#blocks/photoInfo"

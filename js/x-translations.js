@@ -328,6 +328,7 @@
 			"schema.competition.association":"Zväz",
 			"schema.competition.ageCategory":"Veková kategória",
 			"schema.competition.competitionLevel":"Úroveň súťaže",
+			"schema.competition.competitionGroup":"Skupina súťaží",
 
 			"schema.roster.title":"Družstvo",
 			"schema.roster.baseData":"Základné údaje",
@@ -412,7 +413,7 @@
 			"schema.competitionPart.competitionModel":"Model súťaže",
 			"schema.competitionPart.competitionModel.model-1":"Na 3 víťazné sety s hodnotením 3,2,1,0,-1",
 			"schema.competitionPart.competitionModel.model-2":"Na 2 víťazné sety s hodnotením 3,2,1,0,-1",
-			"schema.competitionPart.competitionModel.model-3":"Na 2 víťazné sety s hodnotením 2,1,0",
+			"schema.competitionPart.competitionModel.model-3":"Na 2 víťazné sety s hodnotením 2,1,0,-1",
 			"schema.competitionPart.competitionModel.model-4":"Na 3 hrané sety s hodnotením za každý víťazný set 1 bod",
 			"schema.competitionPart.listOfTeam":"Zoznam družstiev",
 			"schema.competitionPart.listOfTeam.team":"Družstvá",
@@ -833,6 +834,7 @@
 			"schema.competition.association":"Zväz",
 			"schema.competition.ageCategory":"Veková kategória",
 			"schema.competition.competitionLevel":"Úroveň súťaže",
+			"schema.competition.competitionGroup":"Skupina súťaží",
 
 			"schema.roster.title":"Družstvo",
 			"schema.roster.baseData":"Základné údaje",
@@ -917,7 +919,7 @@
 			"schema.competitionPart.competitionModel":"Model súťaže",
 			"schema.competitionPart.competitionModel.model-1":"Na 3 víťazné sety s hodnotením 3,2,1,0,-1",
 			"schema.competitionPart.competitionModel.model-2":"Na 2 víťazné sety s hodnotením 3,2,1,0,-1",
-			"schema.competitionPart.competitionModel.model-3":"Na 2 víťazné sety s hodnotením 2,1,0",
+			"schema.competitionPart.competitionModel.model-3":"Na 2 víťazné sety s hodnotením 2,1,0,-1",
 			"schema.competitionPart.competitionModel.model-4":"Na 3 hrané sety s hodnotením za každý víťazný set 1 bod",
 			"schema.competitionPart.listOfTeam":"Zoznam družstiev",
 			"schema.competitionPart.listOfTeam.team":"Družstvá",

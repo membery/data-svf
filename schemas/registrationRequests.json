@@ -55,13 +55,51 @@
 						},
 						"clubOfFirstRegistration": {
 							"objectLink2": {
-								"schema":"uri://registries/organizations#views/club-km/view"
+								"schema":"uri://registries/organizations#views/club-km/view",
+								"calculatedCriteria": {
+									"func": "criteriaList",
+									"watch": ["officer.club.oid"],
+									"args": [{
+										"func": "criterion",
+										"args": {
+											"f": "_id",
+											"op": "eq",
+											"v": {
+												"func": "get",
+												"args": {
+													"userPath": "officer.club.oid",
+													"default": null
+												}
+											},
+											"nullIfEmpty": true
+										}
+									}]
+								}
 							},
 							"required": false
 						},
 						"club": {
 							"objectLink2": {
-								"schema":"uri://registries/organizations#views/club-km/view"
+								"schema":"uri://registries/organizations#views/club-km/view",
+								"calculatedCriteria": {
+									"func": "criteriaList",
+									"watch": ["officer.club.oid"],
+									"args": [{
+										"func": "criterion",
+										"args": {
+											"f": "_id",
+											"op": "eq",
+											"v": {
+												"func": "get",
+												"args": {
+													"userPath": "officer.club.oid",
+													"default": null
+												}
+											},
+											"nullIfEmpty": true
+										}
+									}]
+								}
 							},
 							"required": false
 						},
@@ -87,7 +125,56 @@
 					"properties": {
 						"club": {
 							"objectLink2": {
-								"schema":"uri://registries/organizations#views/club-km/view"
+								"schema":"uri://registries/organizations#views/club-km/view",
+								"calculatedCriteria": {
+									"func": "criteriaList",
+									"watch": ["officer.club.oid"],
+									"args": [{
+										"func": "criterion",
+										"args": {
+											"f": "_id",
+											"op": "eq",
+											"v": {
+												"func": "get",
+												"args": {
+													"userPath": "officer.club.oid",
+													"default": null
+												}
+											},
+											"nullIfEmpty": true
+										}
+									}]
+								}
+							}
+						},
+						"association": null,
+						"note": null
+					}
+				},
+				"scorer": {
+					"properties": {
+						"club": {
+							"objectLink2": {
+								"schema":"uri://registries/organizations#views/club-km/view",
+								"calculatedCriteria": {
+									"func": "criteriaList",
+									"watch": ["officer.club.oid"],
+									"args": [{
+										"func": "criterion",
+										"args": {
+											"f": "_id",
+											"op": "eq",
+											"v": {
+												"func": "get",
+												"args": {
+													"userPath": "officer.club.oid",
+													"default": null
+												}
+											},
+											"nullIfEmpty": true
+										}
+									}]
+								}
 							}
 						},
 						"association": null,
