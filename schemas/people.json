@@ -552,7 +552,7 @@
 					"title": "Poznámka",
 					"transCode": "schema.people.note",
 					"type": "string",
-					"large": true
+					"render":{"component":"psui-textarea"}
 				},
 				"language": {
 					"title": "Jazykové znalosti",
@@ -1006,9 +1006,6 @@
 						}
 					}
 				],
-				"properties": {
-					"photoInfo":null
-				},
 				"listFields": [
 					{
 						"field": "baseData.surName",
