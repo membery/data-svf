@@ -89,6 +89,7 @@ html,body {
 		-ms-flex-direction: row;
 			flex-direction: row;
 	min-width: 250px;
+	flex-wrap: wrap;
 }
 .portal-comp-selector-data div {
 	flex: 1 0 200px;

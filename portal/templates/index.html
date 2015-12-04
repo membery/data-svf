@@ -287,19 +287,6 @@ $(function() {
 $(function() {
 	function loadResults(cid) {
 		return $.get('/competition/results/'+cid, function(data) {
-			data.sort(function(a,b) {
-				if (b.wins - a.wins === 0) {
-					if (a.points - b.points === 0) {
-						return (b.setsWon / b.setsLost) - (a.setsWon / a.setsLost);
-					} else {
-						return a.points - b.points;
-					}
-
-				} else {
-					return b.wins - a.wins;
-				}
-			});
-
 			var table = $('.portal-results-data');
 
 			table.empty();
@@ -309,7 +296,13 @@ $(function() {
 				+ '<div class="portal-results-matches">Zápasy</div>'
 				+ '<div class="portal-results-matches">Výhry</div>'
 				+ '<div class="portal-results-matches">Prehry</div>'
-				+ '<div class="portal-results-points">Body</div></div>');
+				+ '<div class="portal-results-matches">Body</div>'
+				+ '<div class="portal-results-points">VSety</div>'
+				+ '<div class="portal-results-points">PSety</div>'
+				+ '<div class="portal-results-points">Sety Pomer</div>'
+				+ '<div class="portal-results-points">VLopty</div>'
+				+ '<div class="portal-results-points">PLopty</div>'
+				+ '<div class="portal-results-points">Lopty Pomer</div></div>');
 
 			table.append(e);
 
@@ -321,7 +314,13 @@ $(function() {
 					+ '<div class="portal-results-matches">' + data[i].matches + '</div>'
 					+ '<div class="portal-results-matches">' + data[i].wins + '</div>'
 					+ '<div class="portal-results-matches">' + (data[i].matches - data[i].wins) + '</div>'
-					+ '<div class="portal-results-points">' + data[i].points + '</div></div>');
+					+ '<div class="portal-results-points">' + data[i].points + '</div>'
+					+ '<div class="portal-results-points">' + data[i].setsWon + '</div>'
+					+ '<div class="portal-results-points">' + data[i].setsLost + '</div>'
+					+ '<div class="portal-results-points">' + (data[i].setsWon/data[i].setsLost).toFixed(4) + '</div>'
+					+ '<div class="portal-results-points">' + data[i].ballsWon + '</div>'
+					+ '<div class="portal-results-points">' + data[i].ballsLost + '</div>'
+					+ '<div class="portal-results-points">' + (data[i].ballsWon/data[i].ballsLost).toFixed(4) + '</div></div>');
 
 				table.append(e);
 			}
