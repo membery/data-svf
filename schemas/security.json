@@ -117,7 +117,26 @@
 			},
 
 
-
+			"Player Beach - read": {
+				"title": "Zobrazenie dát hraca beachvolejbalu",
+				"type": "boolean",
+				"default": true
+			},
+			"Player Beach - write": {
+				"title": "Modifikácia dát hraca beachvolejbalu",
+				"type": "boolean",
+				"default": true
+			},
+			"Referee Beach - read": {
+				"title": "Zobrazenie dát rozhodcu beachvolejbalu",
+				"type": "boolean",
+				"default": true
+			},
+			"Referee Beach - write": {
+				"title": "Modifikácia dát rozhodcu beachvolejbalu",
+				"type": "boolean",
+				"default": true
+			},
 			"Stadium - read": {
 				"title": "Zobrazenie dát stadionu",
 				"type": "boolean",

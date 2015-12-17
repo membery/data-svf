@@ -40,6 +40,8 @@
 			"portal.edit.edit":"Editovať",
 			"portal.menu.title":"Menu",
 			"portal.article.list":"Zoznam článkov",
+			"menu.search.playerBeach.lower.level":"Hráč beach",
+			"menu.search.refereeBeach.lower.level":"Rozhodca beach",
 
 			"schema.towns.town":"Obec",
 			"schema.member.view":"Osoba",
@@ -84,7 +86,9 @@
 			"schema.people.language":"Jazykové znalosti",
 
 			"schema.people.player":"Hráč",
+			"schema.people.player.beach":"Hráč beach",
 			"schema.people.isPlayer":"Je hráč",
+			"schema.people.isPlayerBeach":"Je hráč beach",
 			"schema.people.player.playerLicense":"Číslo HL",
 			"schema.people.player.clubOfFirstRegistration":"Materský klub",
 			"schema.people.player.club":"Klubová príslušnosť",
@@ -103,7 +107,9 @@
 			"schema.people.player.modifiedOn":"Dátum aktualizácie",
 
 			"schema.people.referee":"Rozhodca",
+			"schema.people.referee.beach":"Rozhodca beach",
 			"schema.people.isReferee":"Je rozhodca",
+			"schema.people.isRefereeBeach":"Je rozhodca beach",
 			"schema.people.referee.firstAssociation":"Prvotný zväz",
 			"schema.people.referee.stateOfReferee":"Stav rozhodcu",
 			"schema.people.referee.association":"Aktuálny zväz",
@@ -538,13 +544,15 @@
 		
 		$translateProvider.translations('cz', {
 			"menu.roster.title":"Družstvá",
-			"menu.search.club.person.lower.level": "Hľadať člena klubu",
-			"menu.search.club.player.lower.level":"Hľadať hráča klubu",
-			"menu.requests.search.transferFromClub.lower.level": "Hľadať transfer z klubu",
+			"menu.search.club.person.lower.level": "Hledat člena klubu",
+			"menu.search.club.player.lower.level":"Hledat hráča klubu",
+			"menu.requests.search.transferFromClub.lower.level": "Hledat transfer z klubu",
 			"menu.logins.lower.level": "História prihlásení",
 			"portal.edit.edit":"Editovať",
 			"portal.menu.title":"Menu",
 			"portal.article.list":"Seznam článků",
+			"menu.search.playerBeach.lower.level":"Hráč beach",
+			"menu.search.refereeBeach.lower.level":"Rozhodca beach",
 			
 			"schema.towns.town":"Obec",
 			"schema.member.view":"Osoba",
@@ -589,7 +597,9 @@
 			"schema.people.language":"Jazykové znalosti",
 
 			"schema.people.player":"Hráč",
+			"schema.people.player.beach":"Hráč beach",
 			"schema.people.isPlayer":"Je hráč",
+			"schema.people.isPlayerBeach":"Je hráč beach",
 			"schema.people.player.playerLicense":"Číslo HL",
 			"schema.people.player.clubOfFirstRegistration":"Materský klub",
 			"schema.people.player.club":"Klubová príslušnosť",
@@ -608,7 +618,9 @@
 			"schema.people.player.modifiedOn":"Dátum aktualizácie",
 
 			"schema.people.referee":"Rozhodca",
+			"schema.people.referee.beach":"Rozhodca beach",
 			"schema.people.isReferee":"Je rozhodca",
+			"schema.people.isRefereeBeach":"Je rozhodca beach",
 			"schema.people.referee.firstAssociation":"Prvotný zväz",
 			"schema.people.referee.stateOfReferee":"Stav rozhodcu",
 			"schema.people.referee.association":"Aktuálny zväz",
