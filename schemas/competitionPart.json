@@ -71,7 +71,6 @@
 						"Model-02",
 						"Model-03",
 						"Model-04"
-
 					],
 					"enumTransCodes":[
 						"schema.competitionPart.competitionModel.model-1",
@@ -127,6 +126,86 @@
 										}
 									}]
 								}
+							}
+						},
+						"initialMatches": {
+							"title": "Z",
+							"transCode": "schema.competitionPart.listOfTeam.initialMatches",
+							"type": "string",
+							"render": {
+								"width": "super-narrow"
+							}
+						},
+						"initialWins": {
+							"title": "V",
+							"transCode": "schema.competitionPart.listOfTeam.initialWins",
+							"type": "string",
+							"render": {
+								"width": "super-narrow"
+							}
+						},
+						"initialLoss": {
+							"title": "P",
+							"transCode": "schema.competitionPart.listOfTeam.initialLoss",
+							"type": "string",
+							"render": {
+								"width": "super-narrow"
+							}
+						},
+						"initialPoints": {
+							"title": "B",
+							"transCode": "schema.competitionPart.listOfTeam.initialPoints",
+							"type": "string",
+							"render": {
+								"width": "super-narrow"
+							}
+						},
+						"initialSetsWon": {
+							"title": "VSety",
+							"transCode": "schema.competitionPart.listOfTeam.initialSetsWon",
+							"type": "string",
+							"render": {
+								"width": "super-narrow"
+							}
+						},
+						"initialSetsLost": {
+							"title": "PSety",
+							"transCode": "schema.competitionPart.listOfTeam.initialSetsLost",
+							"type": "string",
+							"render": {
+								"width": "super-narrow"
+							}
+						},
+						"initialSetsRatio": {
+							"title": "Sety pomer",
+							"transCode": "schema.competitionPart.listOfTeam.initialSetsRatio",
+							"type": "string",
+							"render": {
+								"width": "narrow"
+							}
+						},
+						"initialBallsWon": {
+							"title": "VLopy",
+							"transCode": "schema.competitionPart.listOfTeam.initialBallsWon",
+							"type": "string",
+							"render": {
+								"width": "narrow"
+							}
+						},
+						"initialBallsLost": {
+							"title": "PLopty",
+							"transCode": "schema.competitionPart.listOfTeam.initialBallsLost",
+							"type": "string",
+							"render": {
+								"width": "narrow"
+							}
+						},
+						"initialBallsRatio": {
+							"title": "Lopty pomer",
+							"transCode": "schema.competitionPart.listOfTeam.initialBallsRatio",
+							"type": "string",
+							"render": {
+								"width": "narrow"
 							}
 						}
 					}
