@@ -136,6 +136,60 @@
 				}
 			}
 		},
+		"refereeBeach":{
+			"title": "Rozhodca beach",
+			"transCode": "schema.people.referee.beach",
+			"type": "object",
+			"properties": {
+				"isRefereeBeach": {
+					"extends":"uri://registries/commonenums#blocks/boolean",
+					"title": "Je rozhodca beach",
+					"transCode": "schema.people.isRefereeBeach"
+				},
+				"stateOfReferee": {
+					"extends":"uri://registries/commonenums#blocks/active",
+					"title": "Stav rozhodcu",
+					"transCode": "schema.people.referee.stateOfReferee"
+				},
+				"association": {
+					"title": "Zväz",
+					"xxtransCode": "schema.people.officer.association",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/association/view",
+						"fields": {
+							"name": "association.associationName"
+						}
+					}
+				},
+				"dateOfRegistration": {
+					"extends": "uri://registries/commontypes#blocks/date",
+					"title": "Dátum registrácie",
+					"transCode": "schema.people.referee.dateOfRegistration"
+				},
+				"refereeLicense": {
+					"title": "Číslo licencie",
+					"transCode": "schema.people.referee.refereeLicense",
+					"type": "string"
+				},
+				"refereeLicenseType": {
+					"title": "Typ licencie",
+					"transCode": "schema.people.referee.refereeLicenseType",
+					"type": "string",
+					"enum": [
+						"A",
+						"B",
+						"C",
+						"D",
+						"AM"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				}
+			}
+		},
 		"coach": {
 			"title": "Tréner",
 			"transCode": "schema.people.coach",
@@ -469,6 +523,44 @@
 				}
 			}
 		},
+		"playerBeach": {
+			"title": "Hráč beach",
+			"transCode": "schema.people.player.beach",
+			"type": "object",
+			"properties": {
+				"isPlayerBeach": {
+					"extends":"uri://registries/commonenums#blocks/boolean",
+					"title": "Je hráč beach",
+					"transCode": "schema.people.isPlayerBeach"
+				},
+				"stateOfPlayer": {
+					"extends":"uri://registries/commonenums#blocks/active",
+					"title": "Stav hráča",
+					"transCode": "schema.people.player.stateOfPlayer"
+				},
+				"association": {
+					"title": "Zväz",
+					"xxtransCode": "schema.people.officer.association",
+					"type": "object",
+					"objectLink2": {
+						"schema": "uri://registries/organizations#views/association/view",
+						"fields": {
+							"name": "association.associationName"
+						}
+					}
+				},
+				"dateOfRegistration": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Dátum registrácie",
+					"transCode": "schema.people.player.dateOfRegistration"
+				},
+				"registrationCanceled": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Zrušená registrácia",
+					"transCode": "schema.people.player.registrationCanceled"
+				}
+			}
+		},
 		"photoInfo": {
 			"title": "Fotografie",
 			"transCode": "schema.people.photoInfo",
@@ -650,6 +742,12 @@
 				"scorer":{
 					"$ref":"uri://registries/people#blocks/scorer"
 				},
+				"playerBeach":{
+					"$ref":"uri://registries/people#blocks/playerBeach"
+				},
+				"refereeBeach":{
+					"$ref":"uri://registries/people#blocks/refereeBeach"
+				},
 				"photoInfo":{
 					"$ref":"uri://registries/people#blocks/photoInfo"
 				},
@@ -784,6 +882,49 @@
 				}
 			}
 		},
+		"refereeBeach":{
+			"extends":"uri://registries/people#models/person",
+			"title":"Rozhodca beach",
+			"transCode":"schema.people.referee.beach",
+			"security": {
+				"create": {
+					"static": [
+						"Referee Beach - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Referee Beach - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Referee Beach - write"
+					]
+				}
+			},
+			"forcedCriteria": [
+				{
+					"f": "refereeBeach.isRefereeBeach",
+					"op": "eq",
+					"v": "TRUE"
+				}
+			],
+			"properties":{
+				"refereeBeach":{
+					"$ref":"uri://registries/people#blocks/refereeBeach"
+				},
+				"photoInfo":{
+					"$ref":"uri://registries/people#blocks/photoInfo"
+				},
+				"otherInfo":{
+					"$ref":"uri://registries/people#blocks/otherInfo"
+				},
+				"idInfo":{
+					"$ref":"uri://registries/people#blocks/idInfo"
+				}
+			}
+		},
 		"officer":{
 			"extends":"uri://registries/people#models/person",
 			"title":"Funkcionár",
@@ -844,6 +985,49 @@
 			"properties":{
 				"medic":{
 					"$ref":"uri://registries/people#blocks/medic"
+				},
+				"otherInfo":{
+					"$ref":"uri://registries/people#blocks/otherInfo"
+				},
+				"idInfo":{
+					"$ref":"uri://registries/people#blocks/idInfo"
+				}
+			}
+		},
+		"playerBeach":{
+			"extends":"uri://registries/people#models/person",
+			"title":"Hráč beach",
+			"transCode":"schema.people.player.beach",
+			"security": {
+				"create": {
+					"static": [
+						"Player Beach - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Player Beach - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Player Beach - write"
+					]
+				}
+			},
+			"forcedCriteria": [
+				{
+					"f": "playerBeach.isPlayerBeach",
+					"op": "eq",
+					"v": "TRUE"
+				}
+			],
+			"properties":{
+				"playerBeach":{
+					"$ref":"uri://registries/people#blocks/playerBeach"
+				},
+				"photoInfo":{
+					"$ref":"uri://registries/people#blocks/photoInfo"
 				},
 				"otherInfo":{
 					"$ref":"uri://registries/people#blocks/otherInfo"
@@ -985,15 +1169,7 @@
 				}
 			},
 			"view":{
-				"extends":"uri://registries/people#models/fullperson",
-				"clientActions": [
-						{
-							"__DIRECTIVE__": "action-link",
-							"title": "Tlač hráčskej licencie",
-							"schema": "uri://registries/people#views/fullperson/view",
-							"template": "playerLicenseCard.html"
-						}
-				]
+				"extends":"uri://registries/people#models/fullperson"
 			},
 			"search":{
 				"extends":"uri://registries/people#models/fullperson",
@@ -1387,6 +1563,45 @@
 				]
 			}
 		},
+		"refereeBeach":{
+			"view":{
+				"extends":"uri://registries/people#models/refereeBeach"
+			},
+			"search":{
+				"extends":"uri://registries/people#models/refereeBeach",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2FrefereeBeach/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "baseData.surName",
+						"title": "Priezvisko",
+						"transCode":"schema.people.surName"
+					},
+					{
+						"field": "baseData.name",
+						"title": "Meno",
+						"transCode":"schema.people.name"
+					},
+					{
+						"field": "baseData.birthDate",
+						"title": "Dátum narodenia",
+						"transCode":"schema.people.birthDate"
+					},
+					{
+						"field": "contactInfo.city",
+						"title": "Mesto",
+						"transCode":"schema.people.city"
+					}
+				]
+			}
+		},
 		"officer":{
 			"new":{
 				"extends":"uri://registries/people#models/officer"
@@ -1513,22 +1728,51 @@
 				]
 			}
 		},
-		"player":{
-			"new":{
-				"extends":"uri://registries/people#models/player",
-				"title":"Nový hráč"
-			},
+		"playerBeach":{
 			"view":{
-				"extends":"uri://registries/people#models/player",
-				"title":"Hráč",
+				"extends":"uri://registries/people#models/playerBeach"
+			},
+			"search":{
+				"extends":"uri://registries/people#models/playerBeach",
 				"clientActions": [
 					{
-						"__DIRECTIVE__": "action-link",
-						"title": "Tlač hráčskej licencie",
-						"schema": "uri://registries/people#views/fullperson/view",
-						"template": "playerLicenseCard.html"
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2FplayerBeach/{{model.id}}"
+						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "baseData.surName",
+						"title": "Priezvisko",
+						"transCode":"schema.people.surName"
+					},
+					{
+						"field": "baseData.name",
+						"title": "Meno",
+						"transCode":"schema.people.name"
+					},
+					{
+						"field": "baseData.birthDate",
+						"title": "Dátum narodenia",
+						"transCode":"schema.people.birthDate"
+					},
+					{
+						"field": "contactInfo.city",
+						"title": "Mesto",
+						"transCode":"schema.people.city"
 					}
 				]
+			}
+		},
+		"player":{
+			"new":{
+				"extends":"uri://registries/people#models/player"
+			},
+			"view":{
+				"extends":"uri://registries/people#models/player"
 			},
 			"search":{
 				"extends":"uri://registries/people#models/player",
@@ -1541,7 +1785,6 @@
 						}
 					}
 				],
-				"title":"Hráč",
 				"listFields": [
 					{
 						"field": "player.playerLicense",

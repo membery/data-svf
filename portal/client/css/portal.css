@@ -659,14 +659,20 @@ html,body {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-		-ms-flex-align: center;
-			align-items: center;
+	-webkit-box-align: flex-end;
+	-webkit-align-items: flex-end;
+		-ms-flex-align: flex-end;
+			align-items: flex-end;
 	padding-top: 5px;
 	min-height: 32px;
-	
 }
+
+@media (max-width:425px) {
+	.portal-schedule-row{
+		min-height: 46px;
+	}
+}
+
 .portal-schedule-date {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
@@ -674,9 +680,9 @@ html,body {
 		-ms-flex-direction: column;
 			flex-direction: column;
 	-webkit-box-flex: 1;
-	-webkit-flex: 1 0 50px;
-		-ms-flex: 1 0 50px;
-			flex: 1 0 50px;
+	-webkit-flex: 1 0 60px;
+		-ms-flex: 1 0 60px;
+			flex: 1 0 60px;
 	text-align: center;
 }
 .portal-schedule-time {
@@ -686,9 +692,9 @@ html,body {
 		-ms-flex-direction: column;
 			flex-direction: column;
 	-webkit-box-flex: 1;
-	-webkit-flex: 1 0 50px;
-		-ms-flex: 1 0 50px;
-			flex: 1 0 50px;
+	-webkit-flex: 1 0 60px;
+		-ms-flex: 1 0 60px;
+			flex: 1 0 60px;
 	text-align: center;
 }
 .portal-schedule-home {
@@ -809,6 +815,7 @@ html,body {
 	margin-right: 5px;
 	padding-top: 10px;
 	font-weight: bold;
+	min-height: 14px;
 	border-bottom: 1px dotted silver;
 }
 .portal-schedule-dt {
