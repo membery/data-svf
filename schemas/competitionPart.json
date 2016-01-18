@@ -82,6 +82,10 @@
 						"component": "psui-selectbox",
 						"searchable": true
 					}
+				},
+				"lvl": {
+					"type": "string",
+					"title": "Poradie"
 				}
 			}
 		},
@@ -176,14 +180,6 @@
 								"width": "super-narrow"
 							}
 						},
-						"initialSetsRatio": {
-							"title": "Sety pomer",
-							"transCode": "schema.competitionPart.listOfTeam.initialSetsRatio",
-							"type": "string",
-							"render": {
-								"width": "narrow"
-							}
-						},
 						"initialBallsWon": {
 							"title": "VLopy",
 							"transCode": "schema.competitionPart.listOfTeam.initialBallsWon",
@@ -195,14 +191,6 @@
 						"initialBallsLost": {
 							"title": "PLopty",
 							"transCode": "schema.competitionPart.listOfTeam.initialBallsLost",
-							"type": "string",
-							"render": {
-								"width": "narrow"
-							}
-						},
-						"initialBallsRatio": {
-							"title": "Lopty pomer",
-							"transCode": "schema.competitionPart.listOfTeam.initialBallsRatio",
 							"type": "string",
 							"render": {
 								"width": "narrow"

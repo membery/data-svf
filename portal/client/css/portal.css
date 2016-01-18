@@ -83,6 +83,7 @@ html,body {
 	font-family: "Arimo";
 	font-size: 12px;
 	padding: 5px;
+	padding-bottom: 0px;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
@@ -104,6 +105,42 @@ html,body {
 
 .portal-comp-selector-data div.selected {
 	background-color: #045F82;
+	font-weight: bold;
+	color: white;
+}
+
+.portal-part-selector-data {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	font-family: "Arimo";
+	font-size: 12px;
+	padding: 5px;
+	padding-top: 0px;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+			flex-direction: row;
+	min-width: 250px;
+	flex-wrap: wrap;
+	color: white;
+}
+.portal-part-selector-data div {
+	flex: 1 0 200px;
+	text-align: center;
+	padding: 5px;
+	background-color: #045F82;
+}
+
+.portal-part-selector-data div:HOVER {
+	background-color: #4B98B5;
+	cursor: pointer;
+}
+
+.portal-part-selector-data div.selected {
+	background-color: black;
 	font-weight: bold;
 	color: white;
 }

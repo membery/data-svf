@@ -24,6 +24,8 @@
 					<div class="portal-comp-selector-div"><select id="comp-select-1" class="portal-comp-selector"></select></div>
 					<div class="portal-comp-selector-data">
 					</div>
+					<div class="portal-part-selector-data">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -447,6 +449,27 @@ $(function() {
 		$('.portal-comp-selector-data').find('select').prop('disabled', true);
 		$(this).siblings().removeClass('selected');
 		$(this).addClass('selected');
+		$('.portal-comp-selector-div').find('select').prop('disabled', false);
+		$('.portal-comp-selector-data').find('select').prop('disabled', false);
+
+		$('.portal-part-selector-data').empty();
+
+		for (var j = 0; j < e.data.parts.length; j++) {
+			var part = $('<div>' + e.data.parts[j].name + '</div>');
+			$(part).on('click', {id: e.data.parts[j].id}, doPartSelect);
+			$('.portal-part-selector-data').append($(part));
+
+			if (j === 0) {
+				$(part).trigger('click');
+			}
+		}
+	}
+
+	function doPartSelect(e) {
+		$('.portal-comp-selector-div').find('select').prop('disabled', true);
+		$('.portal-comp-selector-data').find('select').prop('disabled', true);
+		$(this).siblings().removeClass('selected');
+		$(this).addClass('selected');
 		$.when(
 		loadResults(e.data.id),
 		loadMatches(e.data.id),
@@ -520,8 +543,9 @@ $(function() {
 
 					for (i = 0; i < data.length; i++) {
 						var link = $('<div>'+data[i].name+'</div>');
-						$(link).on('click', {id: data[i].id}, doCompetitionSelect);
+						$(link).on('click', {id: data[i].id, parts: data[i].parts}, doCompetitionSelect);
 						$('.portal-comp-selector-data').append($(link));
+
 
 						if (i === 0) {
 							$(link).trigger('click');
